@@ -1,0 +1,722 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage{enumerate}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language swedish
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style swedish
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+LABORATION 1
+\end_layout
+
+\begin_layout Author
+732G42
+\end_layout
+
+\begin_layout Section*
+Allmänt
+\end_layout
+
+\begin_layout Standard
+Innehåll:
+\end_layout
+
+\begin_layout Itemize
+Hantera tidseriedata i R
+\end_layout
+
+\begin_layout Itemize
+Göra grafer över tidseriedata 
+\end_layout
+
+\begin_layout Itemize
+Tidserieregression
+\end_layout
+
+\begin_layout Itemize
+Komponentuppdelning
+\end_layout
+
+\begin_layout Section*
+Programvara
+\end_layout
+
+\begin_layout Standard
+Laborationerna utgår från R och Rstudio.
+ Om du behöver repetition i R:
+\end_layout
+
+\begin_layout Itemize
+Titta på kurshemsidan för 732G33: 
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://www.ida.liu.se/~732G33/info/courseinfo.sv.shtml"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Cheat sheets 
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://github.com/STIMALiU/KursRprgm2/tree/master/Cheetsheats"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Material
+\end_layout
+
+\begin_layout Itemize
+Länka de olika kursböckerna.
+\end_layout
+
+\begin_layout Itemize
+Introduction to Time Series Analysis and Forecasting (TSAF),
+\end_layout
+
+\begin_layout Itemize
+Forecasting: Principles and Practice (FPP), tredje upplagan, 
+\begin_inset CommandInset href
+LatexCommand href
+name "websida"
+target "https://otexts.com/fpp3/ "
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Repo för kursen: 
+\begin_inset CommandInset href
+LatexCommand href
+name "länk"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Se sektionen 
+\begin_inset Quotes sld
+\end_inset
+
+
+\lang english
+The 
+\family typewriter
+lm()
+\family default
+ function
+\lang swedish
+
+\begin_inset Quotes srd
+\end_inset
+
+ på sidan 
+\begin_inset CommandInset ref
+LatexCommand pageref
+reference "sec:The-lm()-function"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ nedan för detaljer kring funktionen 
+\family typewriter
+lm()
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Introduktion till tidserieanalys
+\end_layout
+
+\begin_layout Standard
+Länka till R-filer som är välkommenterade.
+ 
+\end_layout
+
+\begin_layout Itemize
+Introducera ts-objekt mm
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+plotta tidserier 
+\end_layout
+
+\begin_layout Itemize
+Visa tiderier med olika skala 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+månad, vecka, dag, timmar??
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+(Visa olika repon med data)
+\end_layout
+
+\begin_layout Itemize
+simulera olika tidserier
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+ta SAC etx
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Section*
+Tidserieregression
+\end_layout
+
+\begin_layout Itemize
+Modellera några olika data
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+linjär trend + kvadratisk trend + kubisk trend
+\end_layout
+
+\begin_layout Itemize
+Säsongsvariation
+\end_layout
+
+\begin_layout Itemize
+Trend + säsongsvariantion
+\end_layout
+
+\begin_layout Itemize
+log-transformera Trend + säsongsvariantion
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Kolla hur man skattar modeller, kollar på residualer, de ska alltid kolla
+ SAC på residualerna!
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+kolla om man kan få fram step-1 ahead prediktions
+\end_layout
+
+\end_deeper
+\begin_layout Subsection*
+Minitab
+\end_layout
+
+\begin_layout Enumerate
+Undersök data genom att göra en tidsseriegraf.
+ Gå in i menyn 
+\shape italic
+Graph
+\shape default
+ och välj där 
+\emph on
+Time series plot
+\emph default
+.
+ Visst finns säsongsvariation.
+ Kommentera.
+\end_layout
+
+\begin_layout Enumerate
+Bilda först en tidsvariabel 
+\emph on
+tid
+\emph default
+ genom att gå in i menyn 
+\emph on
+Calc
+\emph default
+
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+
+\emph on
+Make patterned data
+\emph default
+
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+
+\emph on
+Simple set of numbers
+\emph default
+.
+ Fyll i uppgifterna som behövs.
+\end_layout
+
+\begin_layout Enumerate
+Sedan måste 11 dummies skapas.
+ För att göra detta börjar du med att bilda 12 indikatorvariabler för variabeln
+ Månad.
+ Menyn 
+\emph on
+Calc
+\emph default
+
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ 
+\emph on
+Make Indikator Variables
+\emph default
+ och välj Månad.
+ Senare i regressionen använder du 11 valfria månader=indikatorvariabler.
+ Sätt namn på de nya variablerna såsom Jan, Feb osv.
+\end_layout
+
+\begin_layout Enumerate
+Anpassa en regressionsmodell genom 
+\emph on
+Stat
+\emph default
+
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+
+\emph on
+Regression
+\emph default
+
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+
+\emph on
+Regression
+\emph default
+.
+ Välj Index som responsvariabel och tid och månaderna som förklarande variabler
+ (contiues).
+ Klicka på 
+\emph on
+Results
+\emph default
+ och välj 
+\emph on
+Durbin-Watson statistikan
+\emph default
+.
+ Klicka på 
+\emph on
+Graphs
+\emph default
+ och markera 
+\emph on
+Four in one
+\emph default
+.
+\end_layout
+
+\begin_layout Enumerate
+Tolka valfri dummy-variabel.
+ Utför DW-testet och residualanalys.
+ Tolka resultaten.
+\end_layout
+
+\begin_layout Enumerate
+Gör en prognos för nästkommande två månader.
+ Kommentera.
+\end_layout
+
+\begin_layout Subsection*
+R
+\end_layout
+
+\begin_layout Enumerate
+Läs in data som csv-fil i R.
+\end_layout
+
+\begin_layout Enumerate
+Skapa en tidsvariabel och gör en tidseriesgraf.
+ Visst finns säsongsvariation.
+ Kommentera.
+\end_layout
+
+\begin_layout Enumerate
+Skapa tolv indikatorvariabler, en för varje månad och ge dessa lämpliga
+ namn.
+ Använd 11 av dessa senare i regressionsmodellen.
+\end_layout
+
+\begin_layout Enumerate
+Anpassa en regressionsmodell med 
+\family typewriter
+lm()
+\family default
+.
+ Ta fram 
+\emph on
+Four in one
+\emph default
+ residualplottar, använd 
+\begin_inset CommandInset href
+LatexCommand href
+name "lm_diagnostics()"
+target "https://liuonline.sharepoint.com/:u:/r/sites/Lisam_732G42_2021VT_UM/CourseDocuments/laborationer/lm_diagnostics.R?csf=1&web=1&e=70gvtb"
+literal "false"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Tolka valfri dummy-variabel.
+ Utför DW-testet och residualanalys.
+ Tolka resultaten.
+\end_layout
+
+\begin_layout Enumerate
+Gör en prognos för nästkommande två månader.
+ Kommentera.
+\end_layout
+
+\begin_layout Section*
+Uppgift 2
+\end_layout
+
+\begin_layout Standard
+Nu ska du jobba med ytterligare en tidsserie som innehåller antalet turister
+ till Turkiet som du finner i filen 
+\begin_inset Quotes sld
+\end_inset
+
+
+\family typewriter
+turisterTurkiet.MPJ
+\family default
+
+\begin_inset Quotes srd
+\end_inset
+
+.
+ Beskrivningen av data finns i 
+\begin_inset Quotes sld
+\end_inset
+
+
+\family typewriter
+tu_foreign_visitors_93-04.txt
+\family default
+
+\begin_inset Quotes srd
+\end_inset
+
+.
+ Finns även som csv-fil.
+ Gör samma steg som i uppgift 1 men nu ser du i grafen att data måste logaritmer
+as.
+ Använd naturliga logaritmen.
+ Gå sedan vidare och utför alla steg som i uppgift 1.
+ När du har anpassat modellen så antilogaritmerar (exponentiate) du innan
+ tolkning.
+\end_layout
+
+\begin_layout Section*
+Frivillig inlämning
+\end_layout
+
+\begin_layout Standard
+Inlämningen är frivillig och en möjlighet att få kommentarer och feedback
+ på sina lösningar.
+ Lämna in lösningar till uppgifterna 1 och 2.
+ Lämna in laborationen i grupper om två eller tre personer.
+\end_layout
+
+\begin_layout Standard
+Beskriv nogrannt vad ni gjort.
+ Redovisa vilka modeller som ni använt, och vilka antaganden som de bygger
+ på.
+ Skriv en strukturerad och ordnad rapport.
+ Presentera resultat med lämpliga diagram och tabeller.
+ Alla ekvationer och formler som ni använder i rapporten ska skrivas med
+ ekvationsmiljön i Rmarkdown/Latex/Word.
+ Om ni vill kan ni använda rapportmallen som finns 
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://liuonline.sharepoint.com/:f:/r/sites/Lisam_732G42_2021VT_UM/CourseDocuments/laborationer/rapportmallar?csf=1&web=1&e=oWd3yA"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section*
+
+\lang english
+The 
+\family typewriter
+lm()
+\family default
+ function
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:The-lm()-function"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The function 
+\family typewriter
+lm()
+\family default
+ will be important during the course.
+ Check out the documentation with 
+\family typewriter
+?lm()
+\family default
+.
+ In 
+\begin_inset CommandInset href
+LatexCommand href
+name "lab 7"
+target "https://raw.githubusercontent.com/STIMALiU/KursRprgm2/master/Labs/Documents/D7.pdf"
+literal "false"
+
+\end_inset
+
+ under 
+\begin_inset Quotes eld
+\end_inset
+
+Frivillig fördjupning: Introduktion till linjär regression
+\begin_inset Quotes erd
+\end_inset
+
+ can you find a basic introduction to some of the functionality of the 
+\family typewriter
+lm()
+\family default
+ function.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Note that R is an object oriented language, and the 
+\family typewriter
+lm()
+\family default
+ returns objects with class 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family typewriter
+lm
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+, with has the form of a list, so you can easily fetch different part of
+ the object when needed.
+ These objects has several useful generic functions connected to it:
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+\lang english
+coef()
+\family default
+: Gives the regression coefficients 
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+\lang english
+residuals()
+\family default
+: calculates the residuals of the model
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+\lang english
+fitted()
+\family default
+: Gives the fitted values of the model
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+\lang english
+summary()
+\family default
+: give detail summary and inference.
+ It will return a object of class "summary.lm".
+ 
+\family typewriter
+coef()
+\family default
+ will work on this object.
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+\lang english
+anova()
+\family default
+: Calculates anova table for the model
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+\lang english
+predict()
+\family default
+: make predictions with the model for (new) data 
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+\lang english
+plot()
+\family default
+: output diagnostics plots for the model
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+In general, for documentation for these methods run commands of the type
+ 
+\family typewriter
+?summary.lm()
+\family default
+ in the terminal.
+ Another useful function is to use 
+\family typewriter
+str()
+\family default
+ on the lm-object, to get detailed information about it.
+\end_layout
+
+\end_body
+\end_document
