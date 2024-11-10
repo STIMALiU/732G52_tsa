@@ -226,6 +226,22 @@ plot(winnebago)
 
 
 #-------------------------------------------------------------------------------
+# oilfilters data
+#-------------------------------------------------------------------------------
+
+data("oilfilters")
+?oilfilters
+plot(oilfilters)
+
+
+# vad är det för sorts data?
+# vilken tidsskala? vilket tidsspann?
+# beskriv tidseriens egenskaper
+# undersök SAC och olika laggar på serien
+
+
+
+#-------------------------------------------------------------------------------
 # star data
 #-------------------------------------------------------------------------------
 ?star
