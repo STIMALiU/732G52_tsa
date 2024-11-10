@@ -13,9 +13,9 @@ rm(list=ls()) # rensar i den globala miljön
 
 
 # vi skapar ts-objekt med ts()
-# se videon:
+# se video:
 # https://www.youtube.com/watch?v=0RVGyvFzwwk
-
+# https://www.youtube.com/watch?v=uW3PQmzvUcw
 
 #-------------------------------------------------------------------------------
 # simulera lite data
@@ -47,6 +47,13 @@ library(lmtest)
 # Vi kan ta ut datum från ett ts-objekt:
 y1_date<-as.Date(y1)
 y1_date 
+
+
+
+# vi kan även plotta med ggplot2 via paketet ggfortify
+# se: https://cran.r-project.org/web/packages/ggfortify/vignettes/plot_ts.html
+library(ggfortify)
+autoplot(y1)+theme_bw()+ggtitle("Min tidserie")
 
 
 
@@ -148,6 +155,12 @@ str(acf_val)
 acf_val$acf[,,1]
 plot(acf_val$acf[,,1],ylim=c(0,1))
 
+
+# plotta acf med ggplot2:
+library(ggfortify)
+autoplot(acf(x = as.vector(AirPassengers),plot = FALSE,lag.max = 40))+theme_bw()
+
+
 # testa att beräkna olika laggar (diffar) på serien:
 diff(AirPassengers) # lag 1 - notera att vi förlorar den första obs i data
 diff(AirPassengers,lag = 12) # lag 12 - vi förlorar de första 12 obs i data
@@ -181,6 +194,7 @@ data(tempdub)
 ?tempdub
 class(tempdub)
 plot(tempdub)
+autoplot(tempdub)
 
 # vad är det för sorts data?
 # vilken tidsskala? vilket tidsspann?
