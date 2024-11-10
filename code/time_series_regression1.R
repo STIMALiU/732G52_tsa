@@ -255,6 +255,17 @@ acf(e,lag.max = 30,type = "cov") # anger vi "cov" så får vi autokovariansen
 
 
 #-------------------------------------------------------------------------------
+# Notera!
+#-------------------------------------------------------------------------------
+# när vi har tidsberoende i residualerna, och beräknar medelfelet för beta-hat
+# på vanligt sätt, då blir det inte korrekt medelfel. Detta gör att inferensen  
+# inte blir korrekt -> vi ska inte göra tester/konfidensintervall då
+# mer om det senare i kursen.
+#-------------------------------------------------------------------------------
+
+
+
+#-------------------------------------------------------------------------------
 # fall 2
 set.seed(36)
 e<-arima.sim(n = nobs,list(ar= -0.9),rand.gen = rnorm,sd=1)
