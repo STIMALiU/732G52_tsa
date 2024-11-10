@@ -416,7 +416,7 @@ barplot(exp(coef(lm_temp2)[-1]))
 #-------------------------------------------------------------------------------
 # anpassade värden och prediktion
 # notera: eftersom residualerna inte är oberoende så bör vi vara försiktiga med
-# beräkna predikitonsintervall för prognoser etc. Nedan visas kod hur man kan 
+# att beräkna predikitonsintervall för prognoser etc. Nedan visas kod hur man kan 
 # göra det. (likt fallet med tempdub-data)
 
 
