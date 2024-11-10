@@ -134,8 +134,9 @@ df_error
 #-------------------------------------------------------------------------------
 
 # Gör komponentuppdelning för tempdub data. Testa båda typerna av modeller.
-# Undersök de skattade komponenterna.
+# Undersök de skattade komponenterna. Undersök anpassningen till data-
 # Beräkna utvärderingsmått för båda modellerna.
+# Var modellerna bra? Vilken var bäst av de två?
 
 # Upprepa sedan för winnebago och/eller oilfilters.
 
