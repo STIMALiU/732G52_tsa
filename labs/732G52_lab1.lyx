@@ -385,6 +385,103 @@ literal "false"
 .
 \end_layout
 
+\begin_layout Enumerate
+Ett annat sätt att hantera tidserier med paketet 
+\family typewriter
+tsibble
+\family default
+, där objekt av klassen 
+\family typewriter
+tbl_ts
+\family default
+ används för representera tidserier.
+ 
+\begin_inset Quotes sld
+\end_inset
+
+Boken Forecasting: Principles and Practice
+\begin_inset Quotes srd
+\end_inset
+
+ (FPP) använder 
+\family typewriter
+tsibble
+\family default
+.
+ Se följande länkar för mer information:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Introduction to tsibble"
+target "https://cran.r-project.org/web/packages/tsibble/vignettes/intro-tsibble.html"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "https://tsibble.tidyverts.org/"
+target "tsibble"
+literal "false"
+
+\end_inset
+
+, 
+\begin_inset CommandInset href
+LatexCommand href
+name "https://tidyverts.org/"
+target "Tidy tools for time series"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+R package: 
+\begin_inset CommandInset href
+LatexCommand href
+name "https://cran.r-project.org/web/packages/tsibble/index.html"
+target "tsibble"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Utgå från boken 
+\begin_inset CommandInset href
+LatexCommand href
+name "FPP"
+target "https://otexts.com/fpp3/"
+literal "false"
+
+\end_inset
+
+ och gå igenom och återskapa koden i följande kaptiel:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+2, 3.1-3.4, 4.1-4.2
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Kap 2.10 Exercises: Gör uppgift 9.
+\end_layout
+
 \begin_layout Standard
 \begin_inset Newpage pagebreak
 \end_inset
