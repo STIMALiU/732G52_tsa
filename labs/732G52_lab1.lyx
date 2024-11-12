@@ -479,7 +479,93 @@ literal "false"
 
 \end_deeper
 \begin_layout Enumerate
-Kap 2.10 Exercises: Gör uppgift 9.
+FPP Kap 2.10 Exercises: Gör uppgift 9.
+\end_layout
+
+\begin_layout Enumerate
+Ni ska nu analysera data över pappersproduktion.
+ Data finns i filen 
+\begin_inset Quotes sld
+\end_inset
+
+
+\family typewriter
+pappersproduktion.csv
+\family default
+
+\begin_inset Quotes srd
+\end_inset
+
+ och en beskrivning finns i 
+\family typewriter
+
+\begin_inset Quotes sld
+\end_inset
+
+sw_prod_paper_90-04.txt
+\family default
+
+\begin_inset Quotes srd
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Läs in data som csv-fil i R.
+\end_layout
+
+\begin_layout Enumerate
+Skapa en tidsvariabel och gör en tidseriesgraf.
+ Visst finns säsongsvariation.
+ Kommentera.
+\end_layout
+
+\begin_layout Enumerate
+Skapa tolv indikatorvariabler, en för varje månad och ge dessa lämpliga
+ namn.
+ Använd 11 av dessa senare i regressionsmodellen.
+\end_layout
+
+\begin_layout Enumerate
+Anpassa en regressionsmodell med 
+\family typewriter
+lm()
+\family default
+.
+ Ta fram 
+\emph on
+Four in one
+\emph default
+ residualplottar, använd 
+\begin_inset CommandInset href
+LatexCommand href
+name "residual_diagnostics()"
+target "https://raw.githubusercontent.com/STIMALiU/732G52_tsa/refs/heads/main/code/residual_diagnostics.R"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Tolka valfri dummy-variabel.
+ Utför DW-testet och residualanalys.
+ Ta fram SAC på residualerna.
+ Tolka resultaten.
+\end_layout
+
+\begin_layout Enumerate
+Gör en prognos för nästkommande fyra månader.
+ Kommentera.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Gör en komponentuppdelning på data över pappersproduktion.
+ Analysera och tolka resultaten.
 \end_layout
 
 \begin_layout Standard
