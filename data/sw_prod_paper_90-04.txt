@@ -1,0 +1,45 @@
+sw_prod_paper_90-04.txt
+
+Sweden, Production, Articles of paper and paperboard, 
+Constant Prices, Cal Adj, Index (Mean 2000=100)
+
+
+ SERIESREPORT      
+ 
+ 
+ Series: ew:swe02756 
+Description: Sweden, Production, Articles of paper and paperboard, Index 
+Country: Sweden 
+Category: Industry 
+Comment: Adjusted per working day. NACE Section D, subsection DE, division 21, group 21.2- Manufacture of articles of paper and paperboard. The following classes are included: 21.21 Manufacture of corrugated paper and paperboard and of containers of paper and paperboard, 21.22 Manufacture of household and sanitary goods and of toilet requisites, 21.23 Manufacture of paper stationery, 21.24 Manufacture of wallpaper, 21.25 Manufacture of other articles of paper and paperboard n.e.c.
+Weight 0.0133 of total 1. 
+Source: SCB - Statistics Sweden 
+Copyright: EcoWin AB 
+Unit: 2000=100 
+Currency: Swedish Kronor (SEK) 
+Class: Stock 
+Frequency: Month 
+Calendar Adjusted: Yes 
+Terms: Constant Prices 
+Start Date: 1990:1 
+End Date: 2004:10 
+Last 12 Obs: 2004:10   120.80 
+2004:9   124.20 
+2004:8   117.20 
+2004:7   91.60 
+2004:6   131.70 
+2004:5   127.20 
+2004:4   125.20 
+2004:3   118.20 
+2004:2   116.00 
+2004:1   115.60 
+2003:12   116.10 
+2003:11   125.70 
+ 
+COP one month: -2.74% -3.40 
+COP quarter: 31.88% 29.20 
+COP year: -0.33% -0.40 
+YTD: 4.05% 4.70 
+ 
+ ©2002   EcoWin AB   
+ 
