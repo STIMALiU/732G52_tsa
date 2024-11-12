@@ -509,6 +509,16 @@ sw_prod_paper_90-04.txt
 \end_inset
 
 .
+ Filerna ligger här: 
+\begin_inset CommandInset href
+LatexCommand href
+name "länk"
+target "https://github.com/STIMALiU/732G52_tsa/tree/main/data"
+literal "false"
+
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
