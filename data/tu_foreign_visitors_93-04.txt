@@ -1,0 +1,37 @@
+tu_foreign_visitors_93-04.txt
+
+ SERIESREPORT      
+ 
+ 
+ Series: ew:tur62000 
+Description: Turkey, Number of arriving foreign visitors 
+Country: Turkey 
+Category: Tourism 
+Source: State Institute of Statistics (SIS) 
+Copyright: EcoWin AB 
+Unit: Persons 
+Currency: Not Applicable (N/A) 
+Class: Stock 
+Frequency: Month 
+Start Date: 1993:1 
+End Date: 2004:11 
+Last 12 Obs: 2004:11   949,729 
+2004:10   1,843,417 
+2004:9   2,127,172 
+2004:8   2,525,917 
+2004:7   2,597,432 
+2004:6   1,901,716 
+2004:5   1,801,118 
+2004:4   1,098,401 
+2004:3   783,761 
+2004:2   607,855 
+2004:1   533,818 
+2003:12   636,297 
+ 
+COP one month: -48.48% -893,688.00 
+COP quarter: -62.40% -1,576,188.00 
+COP year: 23.48% 180,622 
+YTD: 49.26% 313,432 
+
+ ©2002   EcoWin AB   
+ 
