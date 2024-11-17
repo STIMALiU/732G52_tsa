@@ -6,10 +6,9 @@
 #-------------------------------------------------------------------------------
 #-------------------------------------------------------------------------------
 
-# based on: https://github.com/robjhyndman/ETC3550Slides/blob/fable/8-ets.R
+# based on code from the fpp3-book.
 
 library(fpp3)
-
 
 
 #-------------------------------------------------------------------------------
@@ -26,6 +25,8 @@ algeria_economy <- global_economy %>%
 
 algeria_economy %>% autoplot(Exports)
 # Exports of goods and services from Algeria from 1960 to 2017. 
+
+# nedan följer detaljer kring hur vi använder ETS() i fpp3:
 
 ?ETS
 # ETS {fable}
@@ -52,12 +53,27 @@ algeria_economy %>% autoplot(Exports)
 # are tested on the data, and the one that gives the best fit (lowest ic) will 
 # be kept.
 
+# nedan specificerar vi olika modeller med ETS()
 fit <- algeria_economy %>%
   model(
+    # modellerna har alltid med konstanttermen (som modelleras med parametern alpha) 
+    
+    # error("A") ger en additiv felterm, "N" står för "none" så ingen trendterm
+    # eller säsongsterm här
     ANN = ETS(Exports ~ error("A") + trend("N") + season("N")),
+    
+    # error("M") ger en multiplikativ felterm
     MNN = ETS(Exports ~ error("M") + trend("N") + season("N")),
+    # här väljer funktionen själv på "M" eller "A" för error():
     autoNN = ETS(Exports ~ trend("N") + season("N")),
   )
+
+# notera från dok:
+# "The methodology is fully automatic. The model is chosen automatically if 
+# not specified."
+# så om vi inte anger vad som gäller för de olika delarna 
+# error(), trend(), season()
+# så kommer funktionen att välja inställningar själv
 
 # kolla resultatet
 fit %>%
@@ -72,10 +88,15 @@ fit %>%
 
 tidy(fit)
 glance(fit)
+# notera: MNN och autoNN ger samma modell här
 
 # plotta
 # components(fit): ger de olika delarna av modellen
 components(fit) %>% autoplot()
+# första panelen ger data
+# andra ger skattade konstanttermen (level)
+# tredje ger felet
+
 
 # add fitted values
 components(fit) %>%
@@ -100,6 +121,7 @@ fit %>%
 
 
 # välja manuellt:
+# vi testar att välja modellernas parametarar själva
 fit1 <- algeria_economy %>%
   model(
     ANN1 = ETS(Exports ~ error("A") + trend("N",alpha=0.1) + season("N")),
@@ -119,6 +141,7 @@ fit1 %>%
 fit1 %>%
   select(ANN3) %>%
   report()
+# vilken modell blev bäst med avseende på AICc?
 
 
 # plotta
@@ -130,6 +153,8 @@ fit1 %>%
   autoplot(algeria_economy) +
   ylab("Exports (% of GDP)") + xlab("Year")
 
+# inovation residuals = residualerna "just nu", dvs inte för någon prognos
+# inovation residuals: y_t - fitted_val_t = res_t  (t är tidsindex)
 fit1 %>%
   select(ANN1) %>%
   gg_tsresiduals()
@@ -146,13 +171,13 @@ fit1_comp<-components(fit1) %>%
   left_join(fitted(fit1), by = c("Country", ".model", "Year"))
 
 
-source(file = "/home/joswi05/Dropbox/Josef/732G42_VT2021/labbar/lm_diagnostics.R")
+source(file = "https://raw.githubusercontent.com/STIMALiU/732G52_tsa/refs/heads/main/code/residual_diagnostics.R")
 
 fit_res_fit<-fit1_comp%>% filter(.model=="ANN3")%>% select(remainder,.fitted)
 fit_res_fit
 
 fit1_comp$remainder
-model_diagnostics(res_vect = as.vector(fit_res_fit$remainder),fit_vect = as.vector(fit_res_fit$.fitted))
+residual_diagnostics(res_vect = as.vector(fit_res_fit$remainder),fit_vect = as.vector(fit_res_fit$.fitted))
 
 
 
@@ -190,7 +215,6 @@ fit %>%
   ylab("Population") + xlab("Year")
 
 # trend("Ad") Damped trend methods
-
 aus_economy %>%
   model(holt = ETS(Pop ~ error("A") + trend("Ad") + season("N"))) %>%
   report()
@@ -288,15 +312,11 @@ fc %>%
 
 components(fit) %>% autoplot()
 
-components(fit)%>%select(multiplicative) %>% autoplot()
 
-fit %>%
-  select(multiplicative) %>%components() %>% autoplot()
+fit %>%  select(multiplicative) %>%components() %>% autoplot()
 
-fit %>%
-  select(additive) %>%components() %>% autoplot()
+fit %>% select(additive) %>%components() %>% autoplot()
 
-components(fit) %>% select(multiplicative) %>% autoplot()
 
 fit %>%
   select(multiplicative) %>%
@@ -338,6 +358,19 @@ fit %>%
   forecast(h=12) %>%
   filter(.model == "hwdamped") %>%
   autoplot(aus_production)
+
+
+
+fit %>%
+  forecast(h=24) %>%
+  filter(.model == "hw") %>%
+  autoplot(aus_production)
+
+fit %>%
+  forecast(h=24) %>%
+  filter(.model == "hwdamped") %>%
+  autoplot(aus_production)
+
 
 
 ## H02
