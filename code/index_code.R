@@ -1,17 +1,18 @@
-#-------------------------------------------------------------------------------
-# Föreläsning 5: Frågestund och demo
-#-------------------------------------------------------------------------------
-
-
-
-# Frågor?
-
-
 
 
 #-------------------------------------------------------------------------------
 # Kompendium om index
 #-------------------------------------------------------------------------------
+# se: https://liuonline.sharepoint.com/:b:/r/sites/Lisam_732G52_2024HT_GU/CourseDocuments/N%C3%A5got%20om%20Index.pdf?csf=1&web=1&e=VgTXES
+
+# nedan visas lösningar till uppgifterna 1, 3 och 4 i R-kod.
+# testa att lösa dem själv med kod innan ni tittar nedan.
+
+
+
+
+
+
 
 
 #-------------------------------------------------------------------------------
