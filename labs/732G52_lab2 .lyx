@@ -410,9 +410,11 @@ Anpassa en lämplig exponentiell utjämningsmodell.
 \begin_deeper
 \begin_layout Enumerate
 När ni valt typ av modell, sätt modellens parameterar för hand.
- Sätt något värde, undersök anpassningen med lämpliga tabeller och grafer.
+ Sätt något värde på alla parametarar, undersök anpassningen med lämpliga
+ tabeller och grafer.
  Försök sen att manuellt ändra värdena på parametrarna så att anpassningen
  blir bättre.
+ Det rekommenderas att man ändrar en parameter i taget.
  Upprepa detta ett par gånger tills ni känner er nöjd med modellen.
  (Syftet är att ni ska få en förståelse för hur modellens parametrar påverkar
  anpassningen)
