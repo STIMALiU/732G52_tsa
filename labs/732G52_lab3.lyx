@@ -230,7 +230,16 @@ Uppgifter
 \end_layout
 
 \begin_layout Enumerate
-Simulera data från ARIMA-sim
+Simulera data från ARIMA-modell: gå igenom koden som finns här 
+\begin_inset CommandInset href
+LatexCommand href
+name "länk"
+target "https://raw.githubusercontent.com/STIMALiU/732G52_tsa/refs/heads/main/code/arima_sim1.R"
+literal "false"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Enumerate
@@ -279,7 +288,27 @@ FPP3 9.11 Exercies: Gör uppgiftena:
 
 \end_deeper
 \begin_layout Enumerate
-Datamaterial från TSA: hare och color -> modelera med ARIMA
+Ladda in datamaterialet 
+\family typewriter
+hare
+\family default
+ eller 
+\family typewriter
+color
+\family default
+ som finns i paketet 
+\family typewriter
+TSA
+\family default
+.
+ Ta reda på vad data handlar om och gör en lämplig tidserieplot.
+ Vad har data för egenskaper? Avgör om tidserien är stationär eller ej.
+ Om inte genomför lämpliga differanser.
+ Studera SAC och SPAC och välj en lämplig ARIMA-modell för tidserien.
+ Anpassa den valda modellen.
+ Plotta anpassade värden tillsammans med data.
+ Studera residualerna.
+ Gör prognos 5 tidssteg framåt.
 \end_layout
 
 \begin_layout Enumerate
