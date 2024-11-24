@@ -230,7 +230,7 @@ Uppgifter
 \end_layout
 
 \begin_layout Enumerate
-Simulera data från ARIMA-modell: gå igenom koden som finns här 
+Simulera data från ARMA-modeller: Gå igenom koden som finns här - 
 \begin_inset CommandInset href
 LatexCommand href
 name "länk"
@@ -239,7 +239,9 @@ literal "false"
 
 \end_inset
 
-.
+ Tanken är att ni ska bekanta er mer ARMA-familjen genom att simulera tidserier
+ med kända parametervärden och sedan studera tidseriegrafen, den teoretiska
+ autokorrelationen och den teoretiska partiella autocorrelationen.
 \end_layout
 
 \begin_layout Enumerate
@@ -274,6 +276,28 @@ Gå igenom och återskapa koden i 9.9
 
 \begin_layout Enumerate
 Gå igenom och återskapa koden i 9.10 
+\end_layout
+
+\begin_layout Itemize
+Här finns kod relaterad till kap 9: 
+\begin_inset CommandInset href
+LatexCommand href
+name "länk1"
+target "https://raw.githubusercontent.com/STIMALiU/732G52_tsa/refs/heads/main/code/arima_code1.R"
+literal "false"
+
+\end_inset
+
+, 
+\begin_inset CommandInset href
+LatexCommand href
+name "länk2"
+target "https://raw.githubusercontent.com/STIMALiU/732G52_tsa/refs/heads/main/code/arima_code2.R"
+literal "false"
+
+\end_inset
+
+
 \end_layout
 
 \end_deeper
@@ -312,8 +336,29 @@ TSA
 \end_layout
 
 \begin_layout Enumerate
-Ta dataseten från de gamla labbarna i G42 som handlade om ARIMA och SARIMA
- och lägg in dem här.
+Ni ska studera antalet nya lastbilsregistreringar, se filen 
+\begin_inset Quotes sld
+\end_inset
+
+
+\family typewriter
+NyLastbilregistreringar.csv
+\family default
+
+\begin_inset Quotes srd
+\end_inset
+
+.
+ som finns här: 
+\begin_inset CommandInset href
+LatexCommand href
+name "länk"
+target "https://github.com/STIMALiU/732G52_tsa/tree/main/data"
+literal "false"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Enumerate
@@ -322,206 +367,10 @@ Alternativ till fable:
 
 \begin_deeper
 \begin_layout Enumerate
-ar(), arima(), forcast
+ar(), arima(), forecast
 \end_layout
 
 \end_deeper
-\begin_layout Enumerate
-Index: Utgå från kompendiet om index som finns på 
-\begin_inset CommandInset href
-LatexCommand href
-name "kursrummet"
-target "https://liuonline.sharepoint.com/:b:/r/sites/Lisam_732G52_2024HT_GU/CourseDocuments/N%C3%A5got%20om%20Index.pdf?csf=1&web=1&e=VgTXES"
-literal "false"
-
-\end_inset
-
-.
- Lös uppgifterna 1, 3 och 4 med hjälp av R.
- Förslag på lösning finns här: 
-\begin_inset CommandInset href
-LatexCommand href
-name "länk"
-target "https://raw.githubusercontent.com/STIMALiU/732G52_tsa/refs/heads/main/code/index_code.R"
-literal "false"
-
-\end_inset
-
- OBS försök att lösa uppgifterna själva först innan ni tittar på lösningen.
-\end_layout
-
-\begin_layout Enumerate
-Stationäritet: gå igenom koden här: 
-\begin_inset CommandInset href
-LatexCommand href
-name "länk"
-target "https://raw.githubusercontent.com/STIMALiU/732G52_tsa/refs/heads/main/code/stationarity.R"
-literal "false"
-
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Enumerate
-Exponentiell utjämning: 
-\end_layout
-
-\begin_deeper
-\begin_layout Enumerate
-Se till att ha gått igenom koden i kap 2 i fpp3: 
-\begin_inset CommandInset href
-LatexCommand href
-name "länk"
-target "https://otexts.com/fpp3/graphics.html"
-literal "false"
-
-\end_inset
-
- och se till att ni är bekväma med 
-\family typewriter
-tsibble objects
-\family default
-.
-\end_layout
-
-\begin_layout Enumerate
-Gå igenom denna kod: 
-\begin_inset CommandInset href
-LatexCommand href
-name "länk"
-target "https://raw.githubusercontent.com/STIMALiU/732G52_tsa/refs/heads/main/code/exponential_smoothing1.R"
-literal "false"
-
-\end_inset
-
- Den baseras på koden som finns i kap 8 i fpp3.
- Använd det kaptilet som referens när ni går igenom koden.
-\end_layout
-
-\end_deeper
-\begin_layout Enumerate
-Ni ska nu analysera data över pappersproduktion.
- Data finns i filen 
-\begin_inset Quotes sld
-\end_inset
-
-
-\family typewriter
-pappersproduktion.csv
-\family default
-
-\begin_inset Quotes srd
-\end_inset
-
- och en beskrivning finns i 
-\family typewriter
-
-\begin_inset Quotes sld
-\end_inset
-
-sw_prod_paper_90-04.txt
-\family default
-
-\begin_inset Quotes srd
-\end_inset
-
-.
- Filerna ligger här: 
-\begin_inset CommandInset href
-LatexCommand href
-name "länk"
-target "https://github.com/STIMALiU/732G52_tsa/tree/main/data"
-literal "false"
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Enumerate
-Läs in data som csv-fil i R.
-\end_layout
-
-\begin_layout Enumerate
-Gör en tidseriesgraf.
- Visst finns säsongsvariation.
- Kommentera.
-\end_layout
-
-\begin_layout Enumerate
-Anpassa en lämplig exponentiell utjämningsmodell.
- Välj typen av modellen utifrån datas egenskaper.
-\end_layout
-
-\begin_deeper
-\begin_layout Enumerate
-När ni valt typ av modell, sätt modellens parameterar för hand.
- Sätt något värde på alla parametarar, undersök anpassningen med lämpliga
- tabeller och grafer.
- Försök sen att manuellt ändra värdena på parametrarna så att anpassningen
- blir bättre.
- Det rekommenderas att man ändrar en parameter i taget.
- Upprepa detta ett par gånger tills ni känner er nöjd med modellen.
- (Syftet är att ni ska få en förståelse för hur modellens parametrar påverkar
- anpassningen)
-\end_layout
-
-\begin_layout Enumerate
-Testa att låta 
-\family typewriter
-ETS()
-\family default
- skatta modellens parametrar (vilket är att föredra)
-\end_layout
-
-\end_deeper
-\begin_layout Enumerate
-Utvärdera modellerna som skattades i c).
-\end_layout
-
-\begin_layout Enumerate
-Gör en prognos med minst två olika modeller för nästkommande 12 månader.
- Kommentera.
-\end_layout
-
-\end_deeper
-\begin_layout Enumerate
-Nu ska ni jobba med ytterligare en tidsserie som innehåller antalet turister
- till Turkiet som du finner i filen ”turisterTurkiet.csv”.
- Beskrivningen av data finns i ”tu_foreign_visitors_93-04.txt”.
- Filerna ligger här: 
-\begin_inset CommandInset href
-LatexCommand href
-name "länk"
-target "https://github.com/STIMALiU/732G52_tsa/tree/main/data"
-literal "false"
-
-\end_inset
-
-.
- Upprepa uppgift 4) för detta datamaterial.
-\end_layout
-
-\begin_layout Enumerate
-Tidserieregression med 
-\family typewriter
-fpp3/fable
-\family default
-: gå igenom och återskapa koden koden i kap 2 i fpp3, 
-\begin_inset CommandInset href
-LatexCommand href
-name "länk"
-target "https://otexts.com/fpp3/regression.html"
-literal "false"
-
-\end_inset
-
-.
-\end_layout
-
 \begin_layout Standard
 \begin_inset Newpage pagebreak
 \end_inset
