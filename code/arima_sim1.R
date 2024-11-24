@@ -2,8 +2,8 @@
 #-------------------------------------------------------------------------------
 # Simulera ARMA modeller
 #-------------------------------------------------------------------------------
-# Nedan finns kod för att simulera olika ARMA modeller och hur deras teoretiska
-# autokorrelation och teoretiska partiella autokorrelation ser ut
+# Nedan finns kod för att simulera olika ARMA modeller och för att undersöka hur
+# deras teoretiska autokorrelation och teoretiska partiella autokorrelation ser ut
 #-------------------------------------------------------------------------------
 #-------------------------------------------------------------------------------
 #-------------------------------------------------------------------------------
