@@ -7,6 +7,7 @@
 \textclass article
 \begin_preamble
 \usepackage{enumerate}
+\hypersetup{urlcolor=blue}
 \end_preamble
 \use_default_options true
 \maintain_unincluded_children false
@@ -358,19 +359,109 @@ literal "false"
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Enumerate
-Alternativ till fable:
+ 
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
-ar(), arima(), forecast
+Plotta först data.
+ Eftersom det är månadsdata med tydlig säsongsvariation så differentierar
+ du serien för månad och sparar den i en kolumn som du kallar diff12.
+\end_layout
+
+\begin_layout Enumerate
+Plotta nu diff12 samt skatta acf, dvs beräkna SAC.
+ Dessa båda grafer tyder på att du behöver differentiera diff12 en gång
+ för trend.
+ Gör det och kalla denna diffade serie diff12_1.
+\end_layout
+
+\begin_layout Enumerate
+Plotta denna serie samt beräkna SAC.
+ Visst ser den stationär ut! Beräkna även SPAC på diff12,1 och bestäm vilken
+ ARIMA modell som är lämplig.
+\end_layout
+
+\begin_layout Enumerate
+Skatta den den valda modellen och skapa lämpliga residualplottar.
+\end_layout
+
+\begin_layout Enumerate
+Är du nöjd med modellen? (Det är svårt att få riktigt bra residualer).
+ Om inte, testa några olika modeller.
+ När du är nöjd, ta fram prognoser för 12 månader fram i tiden.
+ Korrigera nu dessa prognoser så att du får prognoser för antal nylastbilsregist
+reringar (alltså den odiffade serien) .
+ Kommentera.
 \end_layout
 
 \end_deeper
+\begin_layout Enumerate
+Turist-data: utgå från filen ”turisterTurkiet.csv”.
+ Beskrivningen av data finns i ”tu_foreign_visitors_93-04.txt”.
+ Filerna ligger här: 
+\begin_inset CommandInset href
+LatexCommand href
+name "länk"
+target "https://github.com/STIMALiU/732G52_tsa/tree/main/data"
+literal "false"
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Logaritmera serien och plotta den.
+\end_layout
+
+\begin_layout Enumerate
+Målet är nu att anpassa en lämplig SARIMA-modell.
+ Studera SAP och SPAC, och testa olika diffar om ni anser att det behövs.
+ Använd kunskapen från dessa undersökningar för att välja en lämplig SARIMA-mode
+ll.
+\end_layout
+
+\begin_layout Enumerate
+Anpassa modellen och studera residualerna.
+ Är ni nöjd? Om inte försök att justera modellen.
+ När ni är nöjda, gör prognos 12 månader framåt.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Det finns flera alternativ till paketet 
+\family typewriter
+fable
+\family default
+ om man arbetar med ARIMA/SARIMA-modeller i R.
+ Några exempel: I base R så finns funktionerna 
+\family typewriter
+ar()
+\family default
+ och 
+\family typewriter
+arima()
+\family default
+.
+ I paket 
+\begin_inset CommandInset href
+LatexCommand href
+name "forecast"
+target "https://cran.r-project.org/web/packages/forecast/index.html"
+literal "false"
+
+\end_inset
+
+ finns det funktioner för ARIMA-modellering.
+ Den andra upplagan av boken FPP använder paketet 
+\family typewriter
+forecast
+\family default
+.
+\end_layout
+
 \begin_layout Standard
 \begin_inset Newpage pagebreak
 \end_inset
