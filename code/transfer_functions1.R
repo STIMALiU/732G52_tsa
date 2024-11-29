@@ -35,7 +35,10 @@ legend("topright", legend = c("Observed", "Fitted"), col = c("black", "blue"), l
 
 
 
-# testar en mer avancerad modell:
+
+
+
+# testing a more advanced model:
 
 # Fit a transfer function-noise model
 fit2 <- arimax(output_series, 
@@ -64,9 +67,12 @@ res_vect2<-output_series-fitted_values2
 
 # model 1:
 residual_diagnostics(res_vect = res_vect1,fit_vect = fitted_values1)
+# model 2:
 residual_diagnostics(res_vect = res_vect2,fit_vect = fitted_values2)
 
+# model 1:
 acf(res_vect1)
+# model 2:
 acf(res_vect2)
 
 
