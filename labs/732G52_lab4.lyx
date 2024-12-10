@@ -276,7 +276,7 @@ literal "false"
  Kod till delar av denna uppgift finns här: 
 \begin_inset CommandInset href
 LatexCommand href
-name "länk"
+name "trucks_cv.R"
 target "https://raw.githubusercontent.com/STIMALiU/732G52_tsa/refs/heads/main/code/trucks_cv.R"
 literal "false"
 
