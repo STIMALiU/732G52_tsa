@@ -11,7 +11,7 @@ trucks
 autoplot(trucks)
 
 
-trucks_cv_tr <- trucks |> stretch_tsibble(.init = 200, .step = 1)
+trucks_cv_tr <- trucks |> stretch_tsibble(.init = 250, .step = 1)
 
 model1_results <- trucks_cv_tr |>
   model(model1=ARIMA(count~pdq(1,1,0)+PDQ(0,1,0))) |>
