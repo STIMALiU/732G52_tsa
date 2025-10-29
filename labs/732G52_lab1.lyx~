@@ -52,7 +52,7 @@
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
-\suppress_date false
+\suppress_date true
 \justification true
 \use_refstyle 1
 \use_minted 0
@@ -85,11 +85,11 @@ LABORATION 1
 \end_layout
 
 \begin_layout Author
-732G42
+732G52 - HT2024
 \end_layout
 
 \begin_layout Section*
-Allmänt
+Intro
 \end_layout
 
 \begin_layout Standard
@@ -112,12 +112,10 @@ Tidserieregression
 Komponentuppdelning
 \end_layout
 
-\begin_layout Section*
-Programvara
-\end_layout
-
 \begin_layout Standard
-Laborationerna utgår från R och Rstudio.
+Denna laboration är till för er övning på kursmaterialet.
+ Det finns ingen obligatorisk inläming för den.
+ Uppgifterna  utgår från R och Rstudio.
  Om du behöver repetition i R:
 \end_layout
 
@@ -147,29 +145,28 @@ literal "false"
 
 \end_layout
 
-\begin_layout Section*
-Material
+\begin_layout Standard
+
+\series bold
+Material:
 \end_layout
 
 \begin_layout Itemize
-Länka de olika kursböckerna.
+Introduction to Time Series Analysis and Forecasting (TSAF): se R-kod i
+ boken
 \end_layout
 
 \begin_layout Itemize
-Introduction to Time Series Analysis and Forecasting (TSAF),
-\end_layout
-
-\begin_layout Itemize
-Forecasting: Principles and Practice (FPP), tredje upplagan, 
+Forecasting: Principles and Practice (FPP), tredje upplagan: 
 \begin_inset CommandInset href
 LatexCommand href
-name "websida"
-target "https://otexts.com/fpp3/ "
+name "länk"
+target "https://otexts.com/fpp3/"
 literal "false"
 
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Itemize
@@ -177,6 +174,21 @@ Repo för kursen:
 \begin_inset CommandInset href
 LatexCommand href
 name "länk"
+target "https://github.com/STIMALiU/732G52_tsa"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Om man behöver repetition på vanlig linjär regression, se kursen Linjära
+ modeller 1, titta tex här: 
+\begin_inset CommandInset href
+LatexCommand href
+name "länk"
+target "https://hietalai.github.io/statistics-in-r/01-regression/00-intro-regression.html"
 literal "false"
 
 \end_inset
@@ -211,7 +223,7 @@ noprefix "false"
 
 \end_inset
 
- nedan för detaljer kring funktionen 
+ för detaljer kring funktionen 
 \family typewriter
 lm()
 \family default
@@ -219,220 +231,296 @@ lm()
 \end_layout
 
 \begin_layout Standard
-\begin_inset VSpace bigskip
+\begin_inset Newpage pagebreak
 \end_inset
 
 
 \end_layout
 
 \begin_layout Section*
-Introduktion till tidserieanalys
+Uppgifter
 \end_layout
 
-\begin_layout Standard
-Länka till R-filer som är välkommenterade.
+\begin_layout Enumerate
+
+\family typewriter
+ts
+\family default
+-objekt i R: 
+\family typewriter
+ts
+\family default
+-objekt är objekt av klassen 
+\begin_inset Quotes sld
+\end_inset
+
+ts
+\begin_inset Quotes srd
+\end_inset
+
+ som är speciellt skapad för att hantera tidserier på olika sätt.
+ Det finns många olika funktioner som fungerar för eller är anpassade för
+ ts-objekt.
+ Gå igenom Del 1 i koden som finns här: 
+\begin_inset CommandInset href
+LatexCommand href
+name "länk"
+target "https://raw.githubusercontent.com/STIMALiU/732G52_tsa/refs/heads/main/code/intro_time_series.R"
+literal "false"
+
+\end_inset
+
+.
  
 \end_layout
 
-\begin_layout Itemize
-Introducera ts-objekt mm
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-plotta tidserier 
-\end_layout
-
-\begin_layout Itemize
-Visa tiderier med olika skala 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-månad, vecka, dag, timmar??
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-(Visa olika repon med data)
-\end_layout
-
-\begin_layout Itemize
-simulera olika tidserier
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-ta SAC etx
-\end_layout
-
-\end_deeper
-\end_deeper
-\begin_layout Section*
-Tidserieregression
-\end_layout
-
-\begin_layout Itemize
-Modellera några olika data
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-linjär trend + kvadratisk trend + kubisk trend
-\end_layout
-
-\begin_layout Itemize
-Säsongsvariation
-\end_layout
-
-\begin_layout Itemize
-Trend + säsongsvariantion
-\end_layout
-
-\begin_layout Itemize
-log-transformera Trend + säsongsvariantion
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-Kolla hur man skattar modeller, kollar på residualer, de ska alltid kolla
- SAC på residualerna!
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-kolla om man kan få fram step-1 ahead prediktions
-\end_layout
-
-\end_deeper
-\begin_layout Subsection*
-Minitab
-\end_layout
-
 \begin_layout Enumerate
-Undersök data genom att göra en tidsseriegraf.
- Gå in i menyn 
-\shape italic
-Graph
-\shape default
- och välj där 
-\emph on
-Time series plot
-\emph default
+Nu ska ni kolla på några av de dataset med tidserier som finns i olika R-paket
+ som man direkt kan läsa in med funktionen 
+\family typewriter
+data()
+\family default
 .
- Visst finns säsongsvariation.
- Kommentera.
-\end_layout
-
-\begin_layout Enumerate
-Bilda först en tidsvariabel 
-\emph on
-tid
-\emph default
- genom att gå in i menyn 
-\emph on
-Calc
-\emph default
-
-\begin_inset Formula $\rightarrow$
-\end_inset
-
-
-\emph on
-Make patterned data
-\emph default
-
-\begin_inset Formula $\rightarrow$
-\end_inset
-
-
-\emph on
-Simple set of numbers
-\emph default
-.
- Fyll i uppgifterna som behövs.
-\end_layout
-
-\begin_layout Enumerate
-Sedan måste 11 dummies skapas.
- För att göra detta börjar du med att bilda 12 indikatorvariabler för variabeln
- Månad.
- Menyn 
-\emph on
-Calc
-\emph default
-
-\begin_inset Formula $\rightarrow$
-\end_inset
-
+ Gå igenom Del 2 i koden som länkas ovan.
+ Här får ni bekanta er med 
+\family typewriter
+acf()
+\family default
+ (som beräknar sample autocorrelation) och med 
+\family typewriter
+lag()
+\family default
+ som beräknar diffar eller laggar av en vektor/tidserie.
  
-\emph on
-Make Indikator Variables
-\emph default
- och välj Månad.
- Senare i regressionen använder du 11 valfria månader=indikatorvariabler.
- Sätt namn på de nya variablerna såsom Jan, Feb osv.
 \end_layout
 
 \begin_layout Enumerate
-Anpassa en regressionsmodell genom 
-\emph on
-Stat
-\emph default
+Regression med tidseriedata: När vi arbetar med regression på tidseriedata
+ så är mycket likt fallet när vi jobbar med 
+\begin_inset Quotes sld
+\end_inset
 
-\begin_inset Formula $\rightarrow$
+vanlig data
+\begin_inset Quotes srd
+\end_inset
+
+ (tänk kursen Linjära modeller 1).
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Det är vanligt att man skapar en tidsvariabel/tidsindex (kalla den 
+\begin_inset Formula $time$
+\end_inset
+
+ här) som vi använder för att modellera trender i tidserien.
+ Detta eftersom vi inte kan räkna på 
+\begin_inset Quotes sld
+\end_inset
+
+råa datum
+\begin_inset Quotes srd
+\end_inset
+
+.
+ Vi kan låta trenden vara linjär, men vi kan använda kvadratisk eller kubisk
+ trend om vi tror att det anpassar data bättre.
+ Då skapar vi lämpliga transformationer på formen: 
+\begin_inset Formula $time$
+\end_inset
+
+, 
+\begin_inset Formula $time^{2}$
+\end_inset
+
+, 
+\begin_inset Formula $time^{3}$
+\end_inset
+
+, om vi gör det vill vi ofta centrera eller standardisera 
+\begin_inset Formula $time$
+\end_inset
+
+ först.
+\end_layout
+
+\begin_layout Enumerate
+Dock så gäller fortfarande de vanliga antaganden på feltermen för att inferensen
+ ska vara giltig.
+ Vilka är dessa antaganden? Det är vanligt att det finns ett tidsberoende
+ kvar i residualerna efter att man har anpassat en regressionsmodell på
+ tidseriedata.
+ Då ska vi inte göra vanlig inferens (test, konfidensintervall etc), då
+ antagenden för inferensen inte är uppfyllda.
+ Det finns metoder för att göra inferens här, mer om det senare i kursen.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Gå igenom koden som finns här: 
+\begin_inset CommandInset href
+LatexCommand href
+name "länk"
+target "https://raw.githubusercontent.com/STIMALiU/732G52_tsa/refs/heads/main/code/time_series_regression1.R"
+literal "false"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Komponentuppdelning: Gå igenom koden som finns här: 
+\begin_inset CommandInset href
+LatexCommand href
+name "länk"
+target "https://raw.githubusercontent.com/STIMALiU/732G52_tsa/refs/heads/main/code/decomposition1.R"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Ett annat sätt att hantera tidserier med paketet 
+\family typewriter
+tsibble
+\family default
+, där objekt av klassen 
+\family typewriter
+tbl_ts
+\family default
+ används för representera tidserier.
+ 
+\begin_inset Quotes sld
+\end_inset
+
+Boken Forecasting: Principles and Practice
+\begin_inset Quotes srd
+\end_inset
+
+ (FPP) använder 
+\family typewriter
+tsibble
+\family default
+.
+ Se följande länkar för mer information:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Introduction to tsibble"
+target "https://cran.r-project.org/web/packages/tsibble/vignettes/intro-tsibble.html"
+literal "false"
+
 \end_inset
 
 
-\emph on
-Regression
-\emph default
+\end_layout
 
-\begin_inset Formula $\rightarrow$
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "https://tsibble.tidyverts.org/"
+target "tsibble"
+literal "false"
+
+\end_inset
+
+, 
+\begin_inset CommandInset href
+LatexCommand href
+name "https://tidyverts.org/"
+target "Tidy tools for time series"
+literal "false"
+
 \end_inset
 
 
-\emph on
-Regression
-\emph default
-.
- Välj Index som responsvariabel och tid och månaderna som förklarande variabler
- (contiues).
- Klicka på 
-\emph on
-Results
-\emph default
- och välj 
-\emph on
-Durbin-Watson statistikan
-\emph default
-.
- Klicka på 
-\emph on
-Graphs
-\emph default
- och markera 
-\emph on
-Four in one
-\emph default
-.
+\end_layout
+
+\begin_layout Itemize
+R package: 
+\begin_inset CommandInset href
+LatexCommand href
+name "https://cran.r-project.org/web/packages/tsibble/index.html"
+target "tsibble"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Utgå från boken 
+\begin_inset CommandInset href
+LatexCommand href
+name "FPP"
+target "https://otexts.com/fpp3/"
+literal "false"
+
+\end_inset
+
+ och gå igenom och återskapa koden i följande kaptiel:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+2, 3.1-3.4, 4.1-4.2
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+FPP Kap 2.10 Exercises: Gör uppgift 9.
 \end_layout
 
 \begin_layout Enumerate
-Tolka valfri dummy-variabel.
- Utför DW-testet och residualanalys.
- Tolka resultaten.
+Ni ska nu analysera data över pappersproduktion.
+ Data finns i filen 
+\begin_inset Quotes sld
+\end_inset
+
+
+\family typewriter
+pappersproduktion.csv
+\family default
+
+\begin_inset Quotes srd
+\end_inset
+
+ och en beskrivning finns i 
+\family typewriter
+
+\begin_inset Quotes sld
+\end_inset
+
+sw_prod_paper_90-04.txt
+\family default
+
+\begin_inset Quotes srd
+\end_inset
+
+.
+ Filerna ligger här: 
+\begin_inset CommandInset href
+LatexCommand href
+target "https://github.com/STIMALiU/732G52_tsa/tree/main/datalänk"
+literal "false"
+
+\end_inset
+
+
 \end_layout
 
-\begin_layout Enumerate
-Gör en prognos för nästkommande två månader.
- Kommentera.
-\end_layout
-
-\begin_layout Subsection*
-R
-\end_layout
-
+\begin_deeper
 \begin_layout Enumerate
 Läs in data som csv-fil i R.
 \end_layout
@@ -462,97 +550,38 @@ Four in one
  residualplottar, använd 
 \begin_inset CommandInset href
 LatexCommand href
-name "lm_diagnostics()"
-target "https://liuonline.sharepoint.com/:u:/r/sites/Lisam_732G42_2021VT_UM/CourseDocuments/laborationer/lm_diagnostics.R?csf=1&web=1&e=70gvtb"
+name "residual_diagnostics()"
+target "https://raw.githubusercontent.com/STIMALiU/732G52_tsa/refs/heads/main/code/residual_diagnostics.R"
 literal "false"
 
 \end_inset
 
 .
- 
 \end_layout
 
 \begin_layout Enumerate
 Tolka valfri dummy-variabel.
  Utför DW-testet och residualanalys.
+ Ta fram SAC på residualerna.
  Tolka resultaten.
 \end_layout
 
 \begin_layout Enumerate
-Gör en prognos för nästkommande två månader.
+Gör en prognos för nästkommande fyra månader.
  Kommentera.
 \end_layout
 
-\begin_layout Section*
-Uppgift 2
+\end_deeper
+\begin_layout Enumerate
+Gör en komponentuppdelning på data över pappersproduktion.
+ Analysera och tolka resultaten.
 \end_layout
 
 \begin_layout Standard
-Nu ska du jobba med ytterligare en tidsserie som innehåller antalet turister
- till Turkiet som du finner i filen 
-\begin_inset Quotes sld
+\begin_inset Newpage pagebreak
 \end_inset
 
 
-\family typewriter
-turisterTurkiet.MPJ
-\family default
-
-\begin_inset Quotes srd
-\end_inset
-
-.
- Beskrivningen av data finns i 
-\begin_inset Quotes sld
-\end_inset
-
-
-\family typewriter
-tu_foreign_visitors_93-04.txt
-\family default
-
-\begin_inset Quotes srd
-\end_inset
-
-.
- Finns även som csv-fil.
- Gör samma steg som i uppgift 1 men nu ser du i grafen att data måste logaritmer
-as.
- Använd naturliga logaritmen.
- Gå sedan vidare och utför alla steg som i uppgift 1.
- När du har anpassat modellen så antilogaritmerar (exponentiate) du innan
- tolkning.
-\end_layout
-
-\begin_layout Section*
-Frivillig inlämning
-\end_layout
-
-\begin_layout Standard
-Inlämningen är frivillig och en möjlighet att få kommentarer och feedback
- på sina lösningar.
- Lämna in lösningar till uppgifterna 1 och 2.
- Lämna in laborationen i grupper om två eller tre personer.
-\end_layout
-
-\begin_layout Standard
-Beskriv nogrannt vad ni gjort.
- Redovisa vilka modeller som ni använt, och vilka antaganden som de bygger
- på.
- Skriv en strukturerad och ordnad rapport.
- Presentera resultat med lämpliga diagram och tabeller.
- Alla ekvationer och formler som ni använder i rapporten ska skrivas med
- ekvationsmiljön i Rmarkdown/Latex/Word.
- Om ni vill kan ni använda rapportmallen som finns 
-\begin_inset CommandInset href
-LatexCommand href
-name "här"
-target "https://liuonline.sharepoint.com/:f:/r/sites/Lisam_732G42_2021VT_UM/CourseDocuments/laborationer/rapportmallar?csf=1&web=1&e=oWd3yA"
-literal "false"
-
-\end_inset
-
-.
 \end_layout
 
 \begin_layout Section*
@@ -585,28 +614,7 @@ lm()
 ?lm()
 \family default
 .
- In 
-\begin_inset CommandInset href
-LatexCommand href
-name "lab 7"
-target "https://raw.githubusercontent.com/STIMALiU/KursRprgm2/master/Labs/Documents/D7.pdf"
-literal "false"
-
-\end_inset
-
- under 
-\begin_inset Quotes eld
-\end_inset
-
-Frivillig fördjupning: Introduktion till linjär regression
-\begin_inset Quotes erd
-\end_inset
-
- can you find a basic introduction to some of the functionality of the 
-\family typewriter
-lm()
-\family default
- function.
+ 
 \end_layout
 
 \begin_layout Standard
