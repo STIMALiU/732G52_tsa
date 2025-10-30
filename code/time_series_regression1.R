@@ -99,6 +99,8 @@ for(i in 1:12){
 }
 head(X_month,15) # notera vilka rader som har en 1
 
+# ovan skapar vi en lämplig designmatris för månader "för hand",
+# det går även att använda funktionen model.matrix()
 
 
 # tar bort april -> baseline som vi jämför med -> vi har 11 dummy-variabler för månader
