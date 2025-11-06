@@ -94,7 +94,7 @@ LABORATION 2
 \end_layout
 
 \begin_layout Author
-732G52 - HT2024
+732G52 - HT2025
 \end_layout
 
 \begin_layout Section*
@@ -289,7 +289,8 @@ literal "false"
 
 \end_inset
 
- OBS försök att lösa uppgifterna själva först innan ni tittar på lösningen.
+ OBS:
+ försök att lösa uppgifterna själva först innan ni tittar på lösningen.
 \end_layout
 
 \begin_layout Enumerate
@@ -310,7 +311,7 @@ literal "false"
 
 \begin_layout Enumerate
 Regression med tidseriedata:
- När vi arbetar med regression på tidseriedata så är likt fallet när vi jobbar med 
+ När vi arbetar med regression på tidseriedata så är det likt fallet när vi jobbar med 
 \begin_inset Quotes sld
 \end_inset
 
@@ -366,8 +367,20 @@ råa datum
 \begin_layout Enumerate
 Dock så gäller fortfarande de vanliga antaganden på feltermen för att inferensen ska vara giltig.
  Vilka är dessa antaganden?
- Det är vanligt att det finns ett tidsberoende kvar i residualerna efter att man har anpassat en regressionsmodell på tidseriedata.
- Då ska vi inte göra vanlig inferens (test,
+ 
+\begin_inset Newline newline
+\end_inset
+
+Det är vanligt att det finns ett 
+\series bold
+tidsberoende kvar i residualerna
+\series default
+ efter att man har anpassat en regressionsmodell på tidseriedata.
+ Då ska vi 
+\series bold
+inte göra vanlig inferens
+\series default
+ (test,
  konfidensintervall etc),
  då antagenden för inferensen inte är uppfyllda.
  Det finns metoder för att göra inferens här,
@@ -383,12 +396,12 @@ Om vi gör tidserieregression och konstaterar att de vanliga antaganden för res
 
 \begin_layout Enumerate
 Anta att vi har en regressionsmodell där vi har en variabel i designmatris,
- tex ett tidsvariabel 
+ tex en tidsvariabel 
 \begin_inset Formula $time$
 \end_inset
 
 .
- Om vi i den designmatrisen har andra variabler som är en 
+ Om vi i designmatrisen har andra variabler som är en 
 \series bold
 funktion
 \series default
@@ -526,7 +539,7 @@ enskillt
 \begin_inset Formula $\rightarrow$
 \end_inset
 
- vi kollar på 
+ vi kollar på den kurva som 
 \begin_inset Formula $time$
 \end_inset
 
@@ -540,7 +553,7 @@ enskillt
 \begin_inset Formula $time^{3}$
 \end_inset
 
- gemensamma kurva
+ gemensammt skapar
 \end_layout
 
 \end_deeper
@@ -557,6 +570,65 @@ literal "false"
 
 .
  
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Gå igenom följande delar i i fpp3 
+\begin_inset CommandInset href
+LatexCommand href
+name "Chapter 5 The forecaster’s toolbox"
+target "https://otexts.com/fpp3/toolbox.html"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+5.1-5.5,
+ 5.8 och 5.10 (de andra delarna kan ni komma tillbaka till senare i kursen vid behov)
+\end_layout
+
+\begin_layout Itemize
+Se till att återskapa koden i de olika exemplen
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Tidserieregression med 
+\family typewriter
+fpp3/fable
+\family default
+:
+ gå igenom och återskapa koden koden i kap 7 i fpp3,
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "länk"
+target "https://otexts.com/fpp3/regression.html"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Läs sektionen:
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "Beware of inference after selecting predictors"
+target "https://otexts.com/fpp3/selecting-predictors.html#beware-of-inference-after-selecting-predictors"
+literal "false"
+
+\end_inset
+
+
 \end_layout
 
 \end_deeper
@@ -609,6 +681,11 @@ Läs in data som csv-fil i R.
 Skapa en tidsvariabel och gör en tidseriesgraf.
  Visst finns säsongsvariation.
  Kommentera.
+ Vilken typ av trendmodellering är lämplig att använda här i en regressionsmodell?
+ (ingen,
+ linjär,
+ kvadratisk,
+ kubisk)
 \end_layout
 
 \begin_layout Enumerate
@@ -654,12 +731,6 @@ Gör en prognos för nästkommande fyra månader.
 
 \end_deeper
 \begin_layout Enumerate
-
-\bar under
-!!!!!!!!!!!!!!!!!!!!!!!!!Fortsätt här!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-\end_layout
-
-\begin_layout Enumerate
 Nu ska ni jobba med ytterligare en tidsserie som innehåller antalet turister till Turkiet som du finner i filen ”turisterTurkiet.csv”.
  Beskrivningen av data finns i ”tu_foreign_visitors_93-04.txt”.
  Filerna ligger här:
@@ -673,47 +744,7 @@ literal "false"
 \end_inset
 
 .
- Upprepa uppgift 4) för detta datamaterial.
-\end_layout
-
-\begin_layout Enumerate
-Tidserieregression med 
-\family typewriter
-fpp3/fable
-\family default
-:
- gå igenom och återskapa koden koden i kap 2 i fpp3,
- 
-\begin_inset CommandInset href
-LatexCommand href
-name "länk"
-target "https://otexts.com/fpp3/regression.html"
-literal "false"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Enumerate
-
-\bar under
-Tidserieregression med 
-\family typewriter
-fpp3/fable
-\family default
-:
- gå igenom och återskapa koden koden i kap 5.XX i fpp3,
- 
-\begin_inset CommandInset href
-LatexCommand href
-name "länk"
-target "https://otexts.com/fpp3/regression.html"
-literal "false"
-
-\end_inset
-
-.
+ Genomför en lämplig regressionmodellering av serien.
 \end_layout
 
 \begin_layout Standard
