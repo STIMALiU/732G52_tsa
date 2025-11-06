@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -9,11 +9,11 @@
 \usepackage{enumerate}
 \end_preamble
 \use_default_options true
-\maintain_unincluded_children false
+\maintain_unincluded_children no
 \language swedish
 \language_package default
-\inputencoding auto
-\fontencoding global
+\inputencoding auto-legacy
+\fontencoding auto
 \font_roman "default" "default"
 \font_sans "default" "default"
 \font_typewriter "default" "default"
@@ -21,7 +21,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
-\font_osf false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -55,7 +57,9 @@
 \suppress_date true
 \justification true
 \use_refstyle 1
+\use_formatted_ref 0
 \use_minted 0
+\use_lineno 0
 \index Index
 \shortcut idx
 \color #008000
@@ -71,11 +75,16 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -85,7 +94,7 @@ LABORATION 1
 \end_layout
 
 \begin_layout Author
-732G52 - HT2024
+732G52 - HT2025
 \end_layout
 
 \begin_layout Section*
@@ -105,10 +114,6 @@ Göra grafer över tidseriedata
 \end_layout
 
 \begin_layout Itemize
-Tidserieregression
-\end_layout
-
-\begin_layout Itemize
 Komponentuppdelning
 \end_layout
 
@@ -120,7 +125,8 @@ Denna laboration är till för er övning på kursmaterialet.
 \end_layout
 
 \begin_layout Itemize
-Titta på kurshemsidan för 732G33: 
+Titta på kurshemsidan för 732G33:
+ 
 \begin_inset CommandInset href
 LatexCommand href
 name "här"
@@ -152,12 +158,15 @@ Material:
 \end_layout
 
 \begin_layout Itemize
-Introduction to Time Series Analysis and Forecasting (TSAF): se R-kod i
- boken
+Time Series for Data Science:
+ se R-kod i boken
 \end_layout
 
 \begin_layout Itemize
-Forecasting: Principles and Practice (FPP), tredje upplagan: 
+Forecasting:
+ Principles and Practice (FPP),
+ tredje upplagan:
+ 
 \begin_inset CommandInset href
 LatexCommand href
 name "länk"
@@ -170,7 +179,8 @@ literal "false"
 \end_layout
 
 \begin_layout Itemize
-Repo för kursen: 
+Repo för kursen:
+ 
 \begin_inset CommandInset href
 LatexCommand href
 name "länk"
@@ -183,8 +193,10 @@ literal "false"
 \end_layout
 
 \begin_layout Itemize
-Om man behöver repetition på vanlig linjär regression, se kursen Linjära
- modeller 1, titta tex här: 
+Om man behöver repetition på vanlig linjär regression,
+ se kursen Linjära modeller 1,
+ titta tex här:
+ 
 \begin_inset CommandInset href
 LatexCommand href
 name "länk"
@@ -220,6 +232,7 @@ reference "sec:The-lm()-function"
 plural "false"
 caps "false"
 noprefix "false"
+nolink "false"
 
 \end_inset
 
@@ -246,7 +259,8 @@ Uppgifter
 \family typewriter
 ts
 \family default
--objekt i R: 
+-objekt i R:
+ 
 \family typewriter
 ts
 \family default
@@ -259,9 +273,9 @@ ts
 \end_inset
 
  som är speciellt skapad för att hantera tidserier på olika sätt.
- Det finns många olika funktioner som fungerar för eller är anpassade för
- ts-objekt.
- Gå igenom Del 1 i koden som finns här: 
+ Det finns många olika funktioner som fungerar för eller är anpassade för ts-objekt.
+ Gå igenom Del 1 i koden som finns här:
+ 
 \begin_inset CommandInset href
 LatexCommand href
 name "länk"
@@ -271,12 +285,25 @@ literal "false"
 \end_inset
 
 .
+ Se även här:
  
+\begin_inset CommandInset href
+LatexCommand href
+name "fpp2: 2.1 ts objects"
+target "https://otexts.com/fpp2/ts-objects.html"
+literal "false"
+
+\end_inset
+
+ för information om 
+\family typewriter
+ts
+\family default
+-objekt.
 \end_layout
 
 \begin_layout Enumerate
-Nu ska ni kolla på några av de dataset med tidserier som finns i olika R-paket
- som man direkt kan läsa in med funktionen 
+Nu ska ni kolla på några av de dataset med tidserier som finns i olika R-paket som man direkt kan läsa in med funktionen 
 \family typewriter
 data()
 \family default
@@ -295,85 +322,9 @@ lag()
 \end_layout
 
 \begin_layout Enumerate
-Regression med tidseriedata: När vi arbetar med regression på tidseriedata
- så är mycket likt fallet när vi jobbar med 
-\begin_inset Quotes sld
-\end_inset
-
-vanlig data
-\begin_inset Quotes srd
-\end_inset
-
- (tänk kursen Linjära modeller 1).
+Komponentuppdelning:
+ Gå igenom koden som finns här:
  
-\end_layout
-
-\begin_deeper
-\begin_layout Enumerate
-Det är vanligt att man skapar en tidsvariabel/tidsindex (kalla den 
-\begin_inset Formula $time$
-\end_inset
-
- här) som vi använder för att modellera trender i tidserien.
- Detta eftersom vi inte kan räkna på 
-\begin_inset Quotes sld
-\end_inset
-
-råa datum
-\begin_inset Quotes srd
-\end_inset
-
-.
- Vi kan låta trenden vara linjär, men vi kan använda kvadratisk eller kubisk
- trend om vi tror att det anpassar data bättre.
- Då skapar vi lämpliga transformationer på formen: 
-\begin_inset Formula $time$
-\end_inset
-
-, 
-\begin_inset Formula $time^{2}$
-\end_inset
-
-, 
-\begin_inset Formula $time^{3}$
-\end_inset
-
-, om vi gör det vill vi ofta centrera eller standardisera 
-\begin_inset Formula $time$
-\end_inset
-
- först.
-\end_layout
-
-\begin_layout Enumerate
-Dock så gäller fortfarande de vanliga antaganden på feltermen för att inferensen
- ska vara giltig.
- Vilka är dessa antaganden? Det är vanligt att det finns ett tidsberoende
- kvar i residualerna efter att man har anpassat en regressionsmodell på
- tidseriedata.
- Då ska vi inte göra vanlig inferens (test, konfidensintervall etc), då
- antagenden för inferensen inte är uppfyllda.
- Det finns metoder för att göra inferens här, mer om det senare i kursen.
- 
-\end_layout
-
-\begin_layout Enumerate
-Gå igenom koden som finns här: 
-\begin_inset CommandInset href
-LatexCommand href
-name "länk"
-target "https://raw.githubusercontent.com/STIMALiU/732G52_tsa/refs/heads/main/code/time_series_regression1.R"
-literal "false"
-
-\end_inset
-
-.
- 
-\end_layout
-
-\end_deeper
-\begin_layout Enumerate
-Komponentuppdelning: Gå igenom koden som finns här: 
 \begin_inset CommandInset href
 LatexCommand href
 name "länk"
@@ -390,7 +341,8 @@ Ett annat sätt att hantera tidserier med paketet
 \family typewriter
 tsibble
 \family default
-, där objekt av klassen 
+,
+ där objekt av klassen 
 \family typewriter
 tbl_ts
 \family default
@@ -399,7 +351,8 @@ tbl_ts
 \begin_inset Quotes sld
 \end_inset
 
-Boken Forecasting: Principles and Practice
+Boken Forecasting:
+ Principles and Practice
 \begin_inset Quotes srd
 \end_inset
 
@@ -408,11 +361,8 @@ Boken Forecasting: Principles and Practice
 tsibble
 \family default
 .
- Se följande länkar för mer information:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
+ Gå igenom koden här:
+ 
 \begin_inset CommandInset href
 LatexCommand href
 name "Introduction to tsibble"
@@ -421,23 +371,29 @@ literal "false"
 
 \end_inset
 
-
+ 
 \end_layout
 
+\begin_layout Enumerate
+Se följande länkar för mer information:
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 \begin_inset CommandInset href
 LatexCommand href
-name "https://tsibble.tidyverts.org/"
-target "tsibble"
+name "tsibble"
+target "https://tsibble.tidyverts.org/"
 literal "false"
 
 \end_inset
 
-, 
+,
+ 
 \begin_inset CommandInset href
 LatexCommand href
-name "https://tidyverts.org/"
-target "Tidy tools for time series"
+name "Tidy tools for time series"
+target "https://tidyverts.org/"
 literal "false"
 
 \end_inset
@@ -446,11 +402,12 @@ literal "false"
 \end_layout
 
 \begin_layout Itemize
-R package: 
+R package:
+ 
 \begin_inset CommandInset href
 LatexCommand href
-name "https://cran.r-project.org/web/packages/tsibble/index.html"
-target "tsibble"
+name "tsibble"
+target "https://cran.r-project.org/web/packages/tsibble/index.html"
 literal "false"
 
 \end_inset
@@ -474,12 +431,15 @@ literal "false"
 
 \begin_deeper
 \begin_layout Itemize
-2, 3.1-3.4, 4.1-4.2
+2,
+ 3.1-3.4,
+ 4.1-4.2
 \end_layout
 
 \end_deeper
 \begin_layout Enumerate
-FPP Kap 2.10 Exercises: Gör uppgift 9.
+FPP Kap 2.10 Exercises:
+ Gör uppgift 9.
 \end_layout
 
 \begin_layout Enumerate
@@ -509,71 +469,18 @@ sw_prod_paper_90-04.txt
 \end_inset
 
 .
- Filerna ligger här: 
+ Filerna ligger här:
+ 
 \begin_inset CommandInset href
 LatexCommand href
-target "https://github.com/STIMALiU/732G52_tsa/tree/main/datalänk"
-literal "false"
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Enumerate
-Läs in data som csv-fil i R.
-\end_layout
-
-\begin_layout Enumerate
-Skapa en tidsvariabel och gör en tidseriesgraf.
- Visst finns säsongsvariation.
- Kommentera.
-\end_layout
-
-\begin_layout Enumerate
-Skapa tolv indikatorvariabler, en för varje månad och ge dessa lämpliga
- namn.
- Använd 11 av dessa senare i regressionsmodellen.
-\end_layout
-
-\begin_layout Enumerate
-Anpassa en regressionsmodell med 
-\family typewriter
-lm()
-\family default
-.
- Ta fram 
-\emph on
-Four in one
-\emph default
- residualplottar, använd 
-\begin_inset CommandInset href
-LatexCommand href
-name "residual_diagnostics()"
-target "https://raw.githubusercontent.com/STIMALiU/732G52_tsa/refs/heads/main/code/residual_diagnostics.R"
+name "länk"
+target "https://github.com/STIMALiU/732G52_tsa/tree/main/data"
 literal "false"
 
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Enumerate
-Tolka valfri dummy-variabel.
- Utför DW-testet och residualanalys.
- Ta fram SAC på residualerna.
- Tolka resultaten.
-\end_layout
-
-\begin_layout Enumerate
-Gör en prognos för nästkommande fyra månader.
- Kommentera.
-\end_layout
-
-\end_deeper
-\begin_layout Enumerate
-Gör en komponentuppdelning på data över pappersproduktion.
+ Gör en komponentuppdelning på data över pappersproduktion.
  Analysera och tolka resultaten.
 \end_layout
 
@@ -620,7 +527,8 @@ lm()
 \begin_layout Standard
 
 \lang english
-Note that R is an object oriented language, and the 
+Note that R is an object oriented language,
+ and the 
 \family typewriter
 lm()
 \family default
@@ -636,8 +544,9 @@ lm
 \begin_inset Quotes erd
 \end_inset
 
-, with has the form of a list, so you can easily fetch different part of
- the object when needed.
+,
+ with has the form of a list,
+ so you can easily fetch different part of the object when needed.
  These objects has several useful generic functions connected to it:
 \end_layout
 
@@ -647,7 +556,8 @@ lm
 \lang english
 coef()
 \family default
-: Gives the regression coefficients 
+:
+ Gives the regression coefficients 
 \end_layout
 
 \begin_layout Itemize
@@ -656,7 +566,8 @@ coef()
 \lang english
 residuals()
 \family default
-: calculates the residuals of the model
+:
+ calculates the residuals of the model
 \end_layout
 
 \begin_layout Itemize
@@ -665,7 +576,8 @@ residuals()
 \lang english
 fitted()
 \family default
-: Gives the fitted values of the model
+:
+ Gives the fitted values of the model
 \end_layout
 
 \begin_layout Itemize
@@ -674,7 +586,8 @@ fitted()
 \lang english
 summary()
 \family default
-: give detail summary and inference.
+:
+ give detail summary and inference.
  It will return a object of class "summary.lm".
  
 \family typewriter
@@ -689,7 +602,8 @@ coef()
 \lang english
 anova()
 \family default
-: Calculates anova table for the model
+:
+ Calculates anova table for the model
 \end_layout
 
 \begin_layout Itemize
@@ -698,7 +612,8 @@ anova()
 \lang english
 predict()
 \family default
-: make predictions with the model for (new) data 
+:
+ make predictions with the model for (new) data 
 \end_layout
 
 \begin_layout Itemize
@@ -707,14 +622,15 @@ predict()
 \lang english
 plot()
 \family default
-: output diagnostics plots for the model
+:
+ output diagnostics plots for the model
 \end_layout
 
 \begin_layout Standard
 
 \lang english
-In general, for documentation for these methods run commands of the type
- 
+In general,
+ for documentation for these methods run commands of the type 
 \family typewriter
 ?summary.lm()
 \family default
@@ -723,7 +639,8 @@ In general, for documentation for these methods run commands of the type
 \family typewriter
 str()
 \family default
- on the lm-object, to get detailed information about it.
+ on the lm-object,
+ to get detailed information about it.
 \end_layout
 
 \end_body
