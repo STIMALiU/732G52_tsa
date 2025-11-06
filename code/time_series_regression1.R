@@ -49,21 +49,19 @@ tail(time_index)
 
 # anpassar en regressionsmodell med en enkel linjär trend
 lm_temp<-lm(tempdub~time_index)
-summary(lm_temp)
-# vi noterar att det inte finns ett signifikant samband för tidsindex
-# data verkar inte ha stöd för en linjär trend, vilket vi också såg när
-# vi plottade data.
 
 res_vect<-residuals(lm_temp)
 fit_vect<-fitted(lm_temp)
-
 residual_diagnostics(res_vect = res_vect,fit_vect = fit_vect)
 # residualerna ser inte bra ut här!
 # plotten residuals vs index (= tidsindex) visar oss om viktiga tidsberoenden 
 # finns kvar i data, vilket det gör här. Vi ser ett tydligt periodiskt mönster.
 # residualerna ser inte normalfördelade ut. 
-
+# antaganden är inte uppfyllda! -> vi använder inte t-test mm för beta
+# vi behöver en bättre modell!
 # det är tydligt här att en modell med bara en linjär trend inte är lämpligt här
+coef(lm_temp)
+# skattade beta1 är liten, verkar inte vara någon tydlig linjär trend
 
 # plottar anpassade värden med tidserien:
 plot(tempdub)
@@ -301,7 +299,7 @@ acf(e)
 #?acf
 acf(e,lag.max = 30)
 acf(e,lag.max = 30,type = "cov")
-
+# vi har en tydlig negativ autokorrelation!
 
 
 #-------------------------------------------------------------------------------
@@ -321,6 +319,7 @@ air_time<-as.Date(AirPassengers)
 nobs<-length(air_time)
 
 time_index<-1:nobs
+
 # Regression med linjär trend:
 lm_temp<-lm(AirPassengers~time_index)
 summary(lm_temp)
@@ -335,19 +334,24 @@ acf(res_vect,lag=30)
 # ser inte bra ut! Vi vill ha oberoende residualer om möjligt
 
 
+# om vi tittar på plotten:
+plot(AirPassengers)
+# så ser vi att tidserien verkar har ha ett multiplikativt mönster, med
+# exponentiell trend och säsonger som ökar med tiden
+# -> här är det bra att använda transformera serien med log() om vi vill använda 
+# en regressionsmodell
+
 lm_temp_log<-lm(log(AirPassengers)~time_index)
-summary(lm_temp_log)
 res_vect<-residuals(lm_temp_log)
 fit_vect<-fitted(lm_temp_log)
 residual_diagnostics(res_vect = res_vect,fit_vect = fit_vect)
 # ser bättre ut, men vi ser tydligt säsongsberoende i index vs residuals.
+coef(lm_temp_log)
 exp(coef(lm_temp_log))
 plot(air_time,AirPassengers,t="o")
 # tar exp() på anpassade värden för att få rätt skala till orginaldata
 lines(air_time,exp(fitted(lm_temp_log)),col="red")
 # vi har en ok anpassning för trenden, men vi missar effekten av månader!
-
-
 
 
 #-------------------------------------------------------------------------------
@@ -368,7 +372,8 @@ head(X_month,15)
 # ska ha en kolumn med bara ettor, men lm lägger till det automatiskt, så
 # behöver inte tänka på det:
 
-# tar bort april -> baseline
+# tar bort april -> baseline 
+# (vi kan välja andra månader som baseline)
 X<-cbind(time=time_index,X_month[,-4])
 head(X)
 reg_data<-data.frame(y=as.vector(AirPassengers),X)
@@ -385,12 +390,12 @@ test_index<-133:144
 reg_data_test<-reg_data[test_index,]
 
 lm_temp2<-lm(log(y)~.,data=reg_data_train)
-summary(lm_temp2)
 
 res_vect<-residuals(lm_temp2)
 fit_vect<-fitted(lm_temp2)
 residual_diagnostics(res_vect = res_vect,fit_vect = fit_vect)
 # verkar finnas beroende kvar i index vs res, men ser bättre ut än tidigare!
+coef(lm_temp2)
 
 acf(res_vect,lag=30)
 # ser inte bra ut! Vi vill ha oberoende residualer om möjligt
@@ -408,12 +413,12 @@ library(car)
 durbinWatsonTest(model = lm_temp2)
 # vad säger testet?
 
-summary(lm_temp2)
+
 round(coef(lm_temp2),3)
 barplot(coef(lm_temp2)[-1])
 # hur tolkar vi beta-hat när vi har tagit log-transform på y?
 barplot(exp(coef(lm_temp2)[-1]))
-
+abline(h=1,lty="dashed",col="blue")
 
 #-------------------------------------------------------------------------------
 # anpassade värden och prediktion

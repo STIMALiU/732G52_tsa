@@ -372,9 +372,178 @@ Dock så gäller fortfarande de vanliga antaganden på feltermen för att infere
  då antagenden för inferensen inte är uppfyllda.
  Det finns metoder för att göra inferens här,
  mer om det senare i kursen.
- 
 \end_layout
 
+\begin_layout Enumerate
+Om vi gör tidserieregression och konstaterar att de vanliga antaganden för residualerna inte är uppfyllda,
+ då kan en sådan modell ändå vara användbar i vissa situationer.
+ Modellen kan producera bra prognoser.
+ Även om vi inte kan använda signifikanstester eller konfidensintervall så kan vi använda de skattade regressionskoefficienter som beskrivande statistik för den givna tidserien.
+\end_layout
+
+\begin_layout Enumerate
+Anta att vi har en regressionsmodell där vi har en variabel i designmatris,
+ tex ett tidsvariabel 
+\begin_inset Formula $time$
+\end_inset
+
+.
+ Om vi i den designmatrisen har andra variabler som är en 
+\series bold
+funktion
+\series default
+ av 
+\begin_inset Formula $time$
+\end_inset
+
+,
+ exempel kan vara 
+\begin_inset Formula $time^{2}$
+\end_inset
+
+ och 
+\begin_inset Formula $time^{3}$
+\end_inset
+
+,
+ då är det inte meningsfullt att tolka de enskilda regressionskoefficienterna kopplade till 
+\begin_inset Formula $time$
+\end_inset
+
+,
+ 
+\begin_inset Formula $time^{2}$
+\end_inset
+
+ och 
+\begin_inset Formula $time^{3}$
+\end_inset
+
+.
+ Om vi vill förstå dessa variablers gemensamma effekt på responsvariabeln,
+ då får vi titta på den kurva som de tillsammans bildar och plotta den mot 
+\begin_inset Formula $time$
+\end_inset
+
+.
+ I detta fall så plottar vi kurvan 
+\begin_inset Formula $\beta_{0}+\beta_{1}\cdot time+\beta_{2}\cdot time^{2}+\beta_{3}\cdot time^{3}$
+\end_inset
+
+ mot 
+\begin_inset Formula $time.$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Det går inte att använda den vanliga tolkningen av 
+\begin_inset Formula $\beta$
+\end_inset
+
+:
+ Säg att 
+\begin_inset Formula $\beta_{1}=3.1$
+\end_inset
+
+,
+ om vi fösöker med 
+\begin_inset Quotes sld
+\end_inset
+
+om 
+\begin_inset Formula $time$
+\end_inset
+
+ ökar en enhet så kommer 
+\begin_inset Formula $y$
+\end_inset
+
+ att öka 
+\begin_inset Formula $3.1$
+\end_inset
+
+ enheter,
+ givet att de andra variablerna hålls konstanta
+\begin_inset Quotes srd
+\end_inset
+
+ 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ vi kan inte hålla 
+\begin_inset Formula $time^{2}$
+\end_inset
+
+ och 
+\begin_inset Formula $time^{3}$
+\end_inset
+
+ konstanta om vi ökar 
+\begin_inset Formula $time$
+\end_inset
+
+ med en enhet 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ alltså är det meningslöst att tolka 
+\begin_inset Formula $\text{\ensuremath{\beta_{1}} }$
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+enskillt
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ vi kollar på 
+\begin_inset Formula $time$
+\end_inset
+
+,
+ 
+\begin_inset Formula $time^{2}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $time^{3}$
+\end_inset
+
+ gemensamma kurva
+\end_layout
+
+\end_deeper
 \begin_layout Enumerate
 Gå igenom koden som finns här:
  
