@@ -1,7 +1,7 @@
 
 
 #-------------------------------------------------------------------------------
-# # vitt burs: 
+# vitt burs = iid normalfördelad data med konstant varians
 #-------------------------------------------------------------------------------
 
 nobs<-200
@@ -37,6 +37,9 @@ set.seed(6435)
 y<-rnorm(n = nobs,mean = 0,sd = abs(rnorm(n = nobs,mean = scale(time_index)+1,sd = 0.01)))
 plot(time_index,y,t="l",ylim=c(-10,10))
 acf(y)
+# vi ser inte i acf-plotten varierar över tid
+# här är det bättre att studera den vanliga tidserie-plotten
+# om vi har anpassat en modell till serien, då kan vi undersöka residualer mot tidsindex
 
 x<-scale(time_index)
 # Icke-konstant väntevärde
@@ -44,11 +47,13 @@ set.seed(35)
 y<-10+x+0.1*x^2-2*x^3+rnorm(n=nobs,sd=0.5)
 plot(time_index,y,t="l")
 acf(y,lag.max = 40)
+# här ser vi tydligt i acf-plotten att serien inte är väntevärde stationär
 
-set.seed(84)
+
+set.seed(85)
 # Icke-konstant väntevärde
 # Icke-konstant varians
-e<-rnorm(n = nobs,mean = 0,sd = abs(rnorm(n = nobs,mean = scale(time_index)+0.3,sd = 0.01)))
+e<-rnorm(n = nobs,mean = 0,sd = abs(rnorm(n = nobs,mean = 1.5*scale(time_index)+0.3,sd = 0.01)))
 y<-10+x+0.1*x^2-2*x^3+e
 plot(time_index,y,t="l")
 
@@ -68,7 +73,8 @@ N<-300  # antal obseravtioner
 sd_val<-1
 y0<-1
 x_val<-seq(-2,2,length=N)
-# serien skapas med en AR(1) modell där AR-parametern ändras över tid 
+# serien skapas med en AR(1) modell där AR-parametern ändras över tid
+# mer om detta senare
 ar1_para_vect<- -tanh(4*x_val)
 set.seed(71)
 y<-rep(0,N)
@@ -91,6 +97,9 @@ acf(y[1:100])
 
 # autokorrelation i slutet av serien:
 acf(y[201:300])
+
+# autokorrelation i slutet av serien:
+acf(y)
 
 # detta är ett (något överdrivet) exempel när autokorrelation ändras över tid
 # detta innebär att autokorrelation inte bara beror på det relativa tidsavståndet
