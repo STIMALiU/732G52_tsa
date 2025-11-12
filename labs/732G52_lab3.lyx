@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -7,14 +7,13 @@
 \textclass article
 \begin_preamble
 \usepackage{enumerate}
-\hypersetup{urlcolor=blue}
 \end_preamble
 \use_default_options true
-\maintain_unincluded_children false
+\maintain_unincluded_children no
 \language swedish
 \language_package default
-\inputencoding auto
-\fontencoding global
+\inputencoding auto-legacy
+\fontencoding auto
 \font_roman "default" "default"
 \font_sans "default" "default"
 \font_typewriter "default" "default"
@@ -22,7 +21,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
-\font_osf false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -56,7 +57,9 @@
 \suppress_date true
 \justification true
 \use_refstyle 1
+\use_formatted_ref 0
 \use_minted 0
+\use_lineno 0
 \index Index
 \shortcut idx
 \color #008000
@@ -72,11 +75,16 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -86,7 +94,7 @@ LABORATION 3
 \end_layout
 
 \begin_layout Author
-732G52 - HT2024
+732G52 - HT2025
 \end_layout
 
 \begin_layout Section*
@@ -98,7 +106,7 @@ Innehåll:
 \end_layout
 
 \begin_layout Itemize
-ARIMA-modeller
+Exponentiell utjämning
 \end_layout
 
 \begin_layout Standard
@@ -109,7 +117,8 @@ Denna laboration är till för er övning på kursmaterialet.
 \end_layout
 
 \begin_layout Itemize
-Titta på kurshemsidan för 732G33: 
+Titta på kurshemsidan för 732G33:
+ 
 \begin_inset CommandInset href
 LatexCommand href
 name "här"
@@ -141,12 +150,26 @@ Material:
 \end_layout
 
 \begin_layout Itemize
-Introduction to Time Series Analysis and Forecasting (TSAF): se R-kod i
- boken
+Time Series for Data Science:
+ se R-kod,
+ dataset mm:
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "länk"
+target "https://github.com/BivinSadler/Time-Series-for-Data-Science"
+literal "false"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
-Forecasting: Principles and Practice (FPP), tredje upplagan: 
+Forecasting:
+ Principles and Practice (FPP),
+ tredje upplagan:
+ 
 \begin_inset CommandInset href
 LatexCommand href
 name "länk"
@@ -159,7 +182,8 @@ literal "false"
 \end_layout
 
 \begin_layout Itemize
-Repo för kursen: 
+Repo för kursen:
+ 
 \begin_inset CommandInset href
 LatexCommand href
 name "länk"
@@ -172,8 +196,10 @@ literal "false"
 \end_layout
 
 \begin_layout Itemize
-Om man behöver repetition på vanlig linjär regression, se kursen Linjära
- modeller 1, titta tex här: 
+Om man behöver repetition på vanlig linjär regression,
+ se kursen Linjära modeller 1,
+ titta tex här:
+ 
 \begin_inset CommandInset href
 LatexCommand href
 name "länk"
@@ -183,40 +209,6 @@ literal "false"
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-Se sektionen 
-\begin_inset Quotes sld
-\end_inset
-
-
-\lang english
-The 
-\family typewriter
-lm()
-\family default
- function
-\lang swedish
-
-\begin_inset Quotes srd
-\end_inset
-
- på sidan 
-\begin_inset CommandInset ref
-LatexCommand pageref
-reference "sec:The-lm()-function"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
- för detaljer kring funktionen 
-\family typewriter
-lm()
-\family default
-.
 \end_layout
 
 \begin_layout Standard
@@ -231,126 +223,74 @@ Uppgifter
 \end_layout
 
 \begin_layout Enumerate
-Simulera data från ARMA-modeller: Gå igenom koden som finns här - 
+Exponentiell utjämning:
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Se till att ha gått igenom koden i kap 2 i fpp3:
+ 
 \begin_inset CommandInset href
 LatexCommand href
 name "länk"
-target "https://raw.githubusercontent.com/STIMALiU/732G52_tsa/refs/heads/main/code/arima_sim1.R"
+target "https://otexts.com/fpp3/graphics.html"
 literal "false"
 
 \end_inset
 
- Tanken är att ni ska bekanta er mer ARMA-familjen genom att simulera tidserier
- med kända parametervärden och sedan studera tidseriegrafen, den teoretiska
- autokorrelationen och den teoretiska partiella autocorrelationen.
-\end_layout
-
-\begin_layout Enumerate
-FPP3 kap 9: 
-\begin_inset CommandInset href
-LatexCommand href
-name "ARIMA models"
-target "https://otexts.com/fpp3/arima.html#arima"
-literal "false"
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Enumerate
-Gå igenom och återskapa koden i 9.1 (ej unit root test)
-\end_layout
-
-\begin_layout Enumerate
-Gå igenom och återskapa koden i 9.5 
-\end_layout
-
-\begin_layout Enumerate
-Gå igenom och återskapa koden i 9.7 (ej Plotting the characteristic roots)
-\end_layout
-
-\begin_layout Enumerate
-Gå igenom och återskapa koden i 9.9 
-\end_layout
-
-\begin_layout Enumerate
-Gå igenom och återskapa koden i 9.10 
-\end_layout
-
-\begin_layout Itemize
-Här finns kod relaterad till kap 9: 
-\begin_inset CommandInset href
-LatexCommand href
-name "länk1"
-target "https://raw.githubusercontent.com/STIMALiU/732G52_tsa/refs/heads/main/code/arima_code1.R"
-literal "false"
-
-\end_inset
-
-, 
-\begin_inset CommandInset href
-LatexCommand href
-name "länk2"
-target "https://raw.githubusercontent.com/STIMALiU/732G52_tsa/refs/heads/main/code/arima_code2.R"
-literal "false"
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Enumerate
-FPP3 9.11 Exercies: Gör uppgiftena:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-6, 7, 9, 11, 15
-\end_layout
-
-\end_deeper
-\begin_layout Enumerate
-Ladda in datamaterialet 
+ och se till att ni är bekväma med 
 \family typewriter
-hare
-\family default
- eller 
-\family typewriter
-color
-\family default
- som finns i paketet 
-\family typewriter
-TSA
+tsibble objects
 \family default
 .
- Ta reda på vad data handlar om och gör en lämplig tidserieplot.
- Vad har data för egenskaper? Avgör om tidserien är stationär eller ej.
- Om inte genomför lämpliga differanser.
- Studera SAC och SPAC och välj en lämplig ARIMA-modell för tidserien.
- Anpassa den valda modellen.
- Plotta anpassade värden tillsammans med data.
- Studera residualerna.
- Gör prognos 5 tidssteg framåt.
 \end_layout
 
 \begin_layout Enumerate
-Ni ska studera antalet nya lastbilsregistreringar, se filen 
+Gå igenom denna kod:
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "länk"
+target "https://raw.githubusercontent.com/STIMALiU/732G52_tsa/refs/heads/main/code/exponential_smoothing1.R"
+literal "false"
+
+\end_inset
+
+ Den baseras på koden som finns i kap 8 i fpp3.
+ Använd det kaptilet som referens när ni går igenom koden.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Ni ska nu analysera data över pappersproduktion.
+ Data finns i filen 
 \begin_inset Quotes sld
 \end_inset
 
 
 \family typewriter
-NyLastbilregistreringar.csv
+pappersproduktion.csv
+\family default
+
+\begin_inset Quotes srd
+\end_inset
+
+ och en beskrivning finns i 
+\family typewriter
+
+\begin_inset Quotes sld
+\end_inset
+
+sw_prod_paper_90-04.txt
 \family default
 
 \begin_inset Quotes srd
 \end_inset
 
 .
- som finns här: 
+ Filerna ligger här:
+ 
 \begin_inset CommandInset href
 LatexCommand href
 name "länk"
@@ -359,47 +299,61 @@ literal "false"
 
 \end_inset
 
- 
+
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
-Plotta först data.
- Eftersom det är månadsdata med tydlig säsongsvariation så differentierar
- du serien för månad och sparar den i en kolumn som du kallar diff12.
+Läs in data som csv-fil i R.
 \end_layout
 
 \begin_layout Enumerate
-Plotta nu diff12 samt skatta acf, dvs beräkna SAC.
- Dessa båda grafer tyder på att du behöver differentiera diff12 en gång
- för trend.
- Gör det och kalla denna diffade serie diff12_1.
+Gör en tidseriesgraf.
+ Visst finns säsongsvariation.
+ Kommentera.
 \end_layout
 
 \begin_layout Enumerate
-Plotta denna serie samt beräkna SAC.
- Visst ser den stationär ut! Beräkna även SPAC på diff12,1 och bestäm vilken
- ARIMA modell som är lämplig.
+Anpassa en lämplig exponentiell utjämningsmodell.
+ Välj typen av modellen utifrån datas egenskaper.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+När ni valt typ av modell,
+ sätt modellens parameterar för hand.
+ Sätt något värde på alla parametarar,
+ undersök anpassningen med lämpliga tabeller och grafer.
+ Försök sen att manuellt ändra värdena på parametrarna så att anpassningen blir bättre.
+ Det rekommenderas att man ändrar en parameter i taget.
+ Upprepa detta ett par gånger tills ni känner er nöjd med modellen.
+ (Syftet är att ni ska få en förståelse för hur modellens parametrar påverkar anpassningen)
 \end_layout
 
 \begin_layout Enumerate
-Skatta den den valda modellen och skapa lämpliga residualplottar.
+Testa att låta 
+\family typewriter
+ETS()
+\family default
+ skatta modellens parametrar (vilket är att föredra)
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Utvärdera modellerna som skattades i c).
 \end_layout
 
 \begin_layout Enumerate
-Är du nöjd med modellen? (Det är svårt att få riktigt bra residualer).
- Om inte, testa några olika modeller.
- När du är nöjd, ta fram prognoser för 12 månader fram i tiden.
- Korrigera nu dessa prognoser så att du får prognoser för antal nylastbilsregist
-reringar (alltså den odiffade serien) .
+Gör en prognos med minst två olika modeller för nästkommande 12 månader.
  Kommentera.
 \end_layout
 
 \end_deeper
 \begin_layout Enumerate
-Turist-data: utgå från filen ”turisterTurkiet.csv”.
+Nu ska ni jobba med ytterligare en tidsserie som innehåller antalet turister till Turkiet som du finner i filen ”turisterTurkiet.csv”.
  Beskrivningen av data finns i ”tu_foreign_visitors_93-04.txt”.
- Filerna ligger här: 
+ Filerna ligger här:
+ 
 \begin_inset CommandInset href
 LatexCommand href
 name "länk"
@@ -408,207 +362,8 @@ literal "false"
 
 \end_inset
 
- 
-\end_layout
-
-\begin_deeper
-\begin_layout Enumerate
-Logaritmera serien och plotta den.
-\end_layout
-
-\begin_layout Enumerate
-Målet är nu att anpassa en lämplig SARIMA-modell.
- Studera SAP och SPAC, och testa olika diffar om ni anser att det behövs.
- Använd kunskapen från dessa undersökningar för att välja en lämplig SARIMA-mode
-ll.
-\end_layout
-
-\begin_layout Enumerate
-Anpassa modellen och studera residualerna.
- Är ni nöjd? Om inte försök att justera modellen.
- När ni är nöjda, gör prognos 12 månader framåt.
-\end_layout
-
-\end_deeper
-\begin_layout Enumerate
-Det finns flera alternativ till paketet 
-\family typewriter
-fable
-\family default
- om man arbetar med ARIMA/SARIMA-modeller i R.
- Några exempel: I base R så finns funktionerna 
-\family typewriter
-ar()
-\family default
- och 
-\family typewriter
-arima()
-\family default
 .
- I paket 
-\begin_inset CommandInset href
-LatexCommand href
-name "forecast"
-target "https://cran.r-project.org/web/packages/forecast/index.html"
-literal "false"
-
-\end_inset
-
- finns det funktioner för ARIMA-modellering.
- Den andra upplagan av boken FPP använder paketet 
-\family typewriter
-forecast
-\family default
-.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage pagebreak
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section*
-
-\lang english
-The 
-\family typewriter
-lm()
-\family default
- function
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:The-lm()-function"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-The function 
-\family typewriter
-lm()
-\family default
- will be important during the course.
- Check out the documentation with 
-\family typewriter
-?lm()
-\family default
-.
- 
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-Note that R is an object oriented language, and the 
-\family typewriter
-lm()
-\family default
- returns objects with class 
-\begin_inset Quotes eld
-\end_inset
-
-
-\family typewriter
-lm
-\family default
-
-\begin_inset Quotes erd
-\end_inset
-
-, with has the form of a list, so you can easily fetch different part of
- the object when needed.
- These objects has several useful generic functions connected to it:
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-\lang english
-coef()
-\family default
-: Gives the regression coefficients 
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-\lang english
-residuals()
-\family default
-: calculates the residuals of the model
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-\lang english
-fitted()
-\family default
-: Gives the fitted values of the model
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-\lang english
-summary()
-\family default
-: give detail summary and inference.
- It will return a object of class "summary.lm".
- 
-\family typewriter
-coef()
-\family default
- will work on this object.
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-\lang english
-anova()
-\family default
-: Calculates anova table for the model
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-\lang english
-predict()
-\family default
-: make predictions with the model for (new) data 
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-\lang english
-plot()
-\family default
-: output diagnostics plots for the model
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-In general, for documentation for these methods run commands of the type
- 
-\family typewriter
-?summary.lm()
-\family default
- in the terminal.
- Another useful function is to use 
-\family typewriter
-str()
-\family default
- on the lm-object, to get detailed information about it.
+ Upprepa uppgift 2) för detta datamaterial.
 \end_layout
 
 \end_body
