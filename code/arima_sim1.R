@@ -2,11 +2,18 @@
 #-------------------------------------------------------------------------------
 # Simulera ARMA modeller
 #-------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
+
+
+#-------------------------------------------------------------------------------
 # Nedan finns kod för att simulera olika ARMA modeller och för att undersöka hur
 # deras teoretiska autokorrelation och teoretiska partiella autokorrelation ser ut
+# Tanken är att ni ska jämföra:
+# - den teoretiska autokorrelation mot den empiriska autokorrelation
+# - den teoretiska partiella autokorrelation mot den empiriska partiella autokorrelation
+# för olika ARMA-modeller
 #-------------------------------------------------------------------------------
-#-------------------------------------------------------------------------------
-#-------------------------------------------------------------------------------
+
 
 
 
@@ -28,6 +35,9 @@
 # X[t] = a[1]X[t-1] + … + a[p]X[t-p] + e[t] + b[1]e[t-1] + … + b[q]e[t-q]
 
 # notera "+ b[1]"
+
+
+
 
 library(fpp3)
 library(cowplot)
