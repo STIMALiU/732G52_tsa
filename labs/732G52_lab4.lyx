@@ -1,0 +1,476 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage{enumerate}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children no
+\language swedish
+\language_package default
+\inputencoding auto-legacy
+\fontencoding auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 1
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style swedish
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tablestyle default
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Title
+LABORATION 4
+\end_layout
+
+\begin_layout Author
+732G52 - HT2025
+\end_layout
+
+\begin_layout Section*
+Intro
+\end_layout
+
+\begin_layout Standard
+Innehåll:
+\end_layout
+
+\begin_layout Itemize
+ARIMA-modeller
+\end_layout
+
+\begin_layout Standard
+Denna laboration är till för er övning på kursmaterialet.
+ Det finns ingen obligatorisk inläming för den.
+ Uppgifterna  utgår från R och Rstudio.
+ Om du behöver repetition i R:
+\end_layout
+
+\begin_layout Itemize
+Titta på kurshemsidan för 732G33:
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://www.ida.liu.se/~732G33/info/courseinfo.sv.shtml"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Cheat sheets 
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://github.com/STIMALiU/KursRprgm2/tree/master/Cheetsheats"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Material:
+\end_layout
+
+\begin_layout Itemize
+Time Series for Data Science:
+ se R-kod,
+ dataset mm:
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "länk"
+target "https://github.com/BivinSadler/Time-Series-for-Data-Science"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Forecasting:
+ Principles and Practice (FPP),
+ tredje upplagan:
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "länk"
+target "https://otexts.com/fpp3/"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Repo för kursen:
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "länk"
+target "https://github.com/STIMALiU/732G52_tsa"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Om man behöver repetition på vanlig linjär regression,
+ se kursen Linjära modeller 1,
+ titta tex här:
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "länk"
+target "https://hietalai.github.io/statistics-in-r/01-regression/00-intro-regression.html"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Uppgifter
+\end_layout
+
+\begin_layout Enumerate
+Simulera data från ARMA-modeller:
+ Gå igenom koden som finns här:
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "länk"
+target "https://raw.githubusercontent.com/STIMALiU/732G52_tsa/refs/heads/main/code/arima_sim1.R"
+literal "false"
+
+\end_inset
+
+ Tanken är att ni ska bekanta er mer ARMA-familjen genom att simulera tidserier med kända parametervärden och sedan studera tidseriegrafen,
+ den teoretiska autokorrelationen och den teoretiska partiella autocorrelationen.
+\end_layout
+
+\begin_layout Enumerate
+FPP3 kap 9:
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "ARIMA models"
+target "https://otexts.com/fpp3/arima.html#arima"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Gå igenom och återskapa koden i 9.1 (ej unit root test)
+\end_layout
+
+\begin_layout Enumerate
+Gå igenom och återskapa koden i 9.5 
+\end_layout
+
+\begin_layout Enumerate
+Gå igenom och återskapa koden i 9.7 (ej Plotting the characteristic roots)
+\end_layout
+
+\begin_layout Enumerate
+Gå igenom och återskapa koden i 9.9 
+\end_layout
+
+\begin_layout Enumerate
+Gå igenom och återskapa koden i 9.10 
+\end_layout
+
+\begin_layout Itemize
+Här finns kod relaterad till kap 9:
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "länk1"
+target "https://raw.githubusercontent.com/STIMALiU/732G52_tsa/refs/heads/main/code/arima_code1.R"
+literal "false"
+
+\end_inset
+
+,
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "länk2"
+target "https://raw.githubusercontent.com/STIMALiU/732G52_tsa/refs/heads/main/code/arima_code2.R"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+FPP3 9.11 Exercies:
+ Gör uppgiftena:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+6,
+ 7,
+ 9,
+ 11,
+ 15
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Ladda in datamaterialet 
+\family typewriter
+hare
+\family default
+ eller 
+\family typewriter
+color
+\family default
+ som finns i paketet 
+\family typewriter
+TSA
+\family default
+.
+ Ta reda på vad data handlar om och gör en lämplig tidserieplot.
+ Vad har data för egenskaper?
+ Avgör om tidserien är stationär eller ej.
+ Om inte genomför lämpliga differanser.
+ Studera SAC och SPAC och välj en lämplig ARIMA-modell för tidserien.
+ Anpassa den valda modellen.
+ Plotta anpassade värden tillsammans med data.
+ Studera residualerna.
+ Gör prognos 5 tidssteg framåt.
+\end_layout
+
+\begin_layout Enumerate
+Ni ska studera antalet nya lastbilsregistreringar,
+ se filen 
+\begin_inset Quotes sld
+\end_inset
+
+
+\family typewriter
+NyLastbilregistreringar.csv
+\family default
+
+\begin_inset Quotes srd
+\end_inset
+
+.
+ som finns här:
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "länk"
+target "https://github.com/STIMALiU/732G52_tsa/tree/main/data"
+literal "false"
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Plotta först data.
+ Eftersom det är månadsdata med tydlig säsongsvariation så differentierar du serien för månad och sparar den i en kolumn som du kallar diff12.
+\end_layout
+
+\begin_layout Enumerate
+Plotta nu diff12 samt skatta acf,
+ dvs beräkna SAC.
+ Dessa båda grafer tyder på att du behöver differentiera diff12 en gång för trend.
+ Gör det och kalla denna diffade serie diff12_1.
+\end_layout
+
+\begin_layout Enumerate
+Plotta denna serie samt beräkna SAC.
+ Visst ser den stationär ut!
+ Beräkna även SPAC på diff12,1 och bestäm vilken ARIMA modell som är lämplig.
+\end_layout
+
+\begin_layout Enumerate
+Skatta den den valda modellen och skapa lämpliga residualplottar.
+\end_layout
+
+\begin_layout Enumerate
+Är du nöjd med modellen?
+ (Det är svårt att få riktigt bra residualer).
+ Om inte,
+ testa några olika modeller.
+ När du är nöjd,
+ ta fram prognoser för 12 månader fram i tiden.
+ Korrigera nu dessa prognoser så att du får prognoser för antal nylastbilsregistreringar (alltså den odiffade serien) .
+ Kommentera.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Turist-data:
+ utgå från filen ”turisterTurkiet.csv”.
+ Beskrivningen av data finns i ”tu_foreign_visitors_93-04.txt”.
+ Filerna ligger här:
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "länk"
+target "https://github.com/STIMALiU/732G52_tsa/tree/main/data"
+literal "false"
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Logaritmera serien och plotta den.
+\end_layout
+
+\begin_layout Enumerate
+Målet är nu att anpassa en lämplig SARIMA-modell.
+ Studera SAP och SPAC,
+ och testa olika diffar om ni anser att det behövs.
+ Använd kunskapen från dessa undersökningar för att välja en lämplig SARIMA-modell.
+\end_layout
+
+\begin_layout Enumerate
+Anpassa modellen och studera residualerna.
+ Är ni nöjd?
+ Om inte försök att justera modellen.
+ När ni är nöjda,
+ gör prognos 12 månader framåt.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Det finns flera alternativ till paketet 
+\family typewriter
+fable
+\family default
+ om man arbetar med ARIMA/SARIMA-modeller i R.
+ Några exempel:
+ I base R så finns funktionerna 
+\family typewriter
+ar()
+\family default
+ och 
+\family typewriter
+arima()
+\family default
+.
+ I paket 
+\begin_inset CommandInset href
+LatexCommand href
+name "forecast"
+target "https://cran.r-project.org/web/packages/forecast/index.html"
+literal "false"
+
+\end_inset
+
+ finns det funktioner för ARIMA-modellering.
+ Den andra upplagan av boken FPP använder paketet 
+\family typewriter
+forecast
+\family default
+.
+\end_layout
+
+\end_body
+\end_document
