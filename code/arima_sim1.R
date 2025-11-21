@@ -8,6 +8,7 @@
 #-------------------------------------------------------------------------------
 # Nedan finns kod för att simulera olika ARMA modeller och för att undersöka hur
 # deras teoretiska autokorrelation och teoretiska partiella autokorrelation ser ut
+#
 # Tanken är att ni ska jämföra:
 # - den teoretiska autokorrelation mot den empiriska autokorrelation
 # - den teoretiska partiella autokorrelation mot den empiriska partiella autokorrelation
@@ -42,15 +43,27 @@
 library(fpp3)
 library(cowplot)
 
+# nedan så kommer ni att simulera från olika ARMA-modeller för att sedan studera
+# deras egenskaper (dvs olika typer av autokorrelationer)
+
+
 #-------------------------------------------------------------------------------
 # AR(1)
-nobs<-200
-ar1_phi<-c(0.5,0.9,-0.5,-0.9)
-set.seed(83564)
+nobs<-200 # antal obs i simulerad tidsserie
+# vi testar 4 olika AR(1)-modeller, vi kallar AR-parametern för phi:
+# phi = 0.5. phi = 0.9, phi = -0.5, phi = -0.5
+ar1_phi<-c(0.5,0.9,-0.5,-0.9) 
+
+set.seed(83564) # vi sätter en seed, för att kunna återskapa resultaten
+# Simulerar från phi = 0.5:
 y1<-arima.sim(model = list(ar=ar1_phi[1]),n = nobs,rand.gen = rnorm,sd=0.1)
+# Simulerar från phi = 0.9:
 y2<-arima.sim(model = list(ar=ar1_phi[2]),n = nobs,rand.gen = rnorm,sd=0.1)
+# Simulerar från phi = -0.5:
 y3<-arima.sim(model = list(ar=ar1_phi[3]),n = nobs,rand.gen = rnorm,sd=0.1)
+# Simulerar från phi = -0.9:
 y4<-arima.sim(model = list(ar=ar1_phi[4]),n = nobs,rand.gen = rnorm,sd=0.1)
+# skapar tidsindex
 time_vect<-1:nobs
 
 main_ar1<-paste("phi =",ar1_phi)
