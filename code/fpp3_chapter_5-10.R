@@ -37,9 +37,14 @@ google_2015 |>
 
 google_2015_tr <- google_2015 |>
   stretch_tsibble(.init = 3, .step = 1)
+# .init = 3 : första delen av data som används i korsvalideringen har 3 observationer
+# .step = 1 : vi utökar den första delen med en ny observation i taget, skattar modeller, 
+# och sen fortsätter tills alla observationer finns i data
+
+
 fc <- google_2015_tr |>
   model(RW(Close ~ drift())) |>
-  forecast(h = 8) |> # här anger vi att vi vill göra prognos upp till 8 tidsenhenter framåt
+  forecast(h = 8) |> # här anger vi att vi vill göra prognos upp till 8 tidsenheter framåt
   group_by(.id) |>
   mutate(h = row_number()) |>
   ungroup() |>
@@ -54,16 +59,19 @@ fc |>
 
 
 #-------------------------------------------------------------------------------
-# Testar att jämföra två modeller på google_2015-data
+# Testar att jämföra tre modeller på google_2015-data
 #-------------------------------------------------------------------------------
 google_2015_tr <- google_2015 |>
   # ökar .init = 100
-  stretch_tsibble(.init = 100, .step = 1)
+  stretch_tsibble(.init = 100, .step = 1) 
+# .init = 100 : första delen av data som används i korsvalideringen har 100 observationer
+# .step = 1 : vi utökar den första delen med en ny observation i taget, skattar modeller, 
+# och sen fortsätter tills alla observationer finns i data
 
 ?RW
 fc <- google_2015_tr |>
   model(rw=RW(Close ~ drift())) |> # Random walk model
-  forecast(h = 8) |> # här anger vi att vi vill göra prognos upp till 8 tidsenhenter framåt
+  forecast(h = 8) |> # här anger vi att vi vill göra prognos upp till 8 tidsenheter framåt
   group_by(.id) |>
   mutate(h = row_number()) |>
   ungroup() |>
@@ -73,7 +81,7 @@ fc <- google_2015_tr |>
 ?ARIMA
 fc2 <- google_2015_tr |>
   model(arima=ARIMA(Close ~ pdq(1,1,1)+PDQ(0, 0, 0)+ 0)) |> # ARIMA model
-  forecast(h = 8) |> # <- här anger vi att vi vill göra prognos upp till 8 tidsenhenter framåt
+  forecast(h = 8) |> # <- här anger vi att vi vill göra prognos upp till 8 tidsenheter framåt
   group_by(.id) |>
   mutate(h = row_number()) |>
   ungroup() |>
@@ -83,7 +91,7 @@ fc2 <- google_2015_tr |>
 ?ETS
 fc3 <- google_2015_tr |>
   model(ets=ETS(Close ~ error("A") +trend("A") + season("N"))) |> # Exponential smoothing model med trend
-  forecast(h = 8) |> # här anger vi att vi vill göra prognos upp till 8 tidsenhenter framåt
+  forecast(h = 8) |> # här anger vi att vi vill göra prognos upp till 8 tidsenheter framåt
   group_by(.id) |>
   mutate(h = row_number()) |>
   ungroup() |>
@@ -124,18 +132,22 @@ error<-bind_rows(error_1,error_2,error_3)
 # plottar jämförande kurvor för olika utvärderingsmått 
 
 # RMSE
-error|> ggplot(aes(x = h, y = RMSE,group = .model)) +
+plot1<-error|> ggplot(aes(x = h, y = RMSE,group = .model)) +
   geom_point(aes(color=.model))+geom_line(aes(color=.model))
+plot1
 
 # MAE
-error|> ggplot(aes(x = h, y = MAE,group = .model)) +
+plot2<-error|> ggplot(aes(x = h, y = MAE,group = .model)) +
   geom_point(aes(color=.model))+geom_line(aes(color=.model))
+plot2
 
 # MAPE
-error|> ggplot(aes(x = h, y = MAPE,group = .model)) +
+plot3<-error|> ggplot(aes(x = h, y = MAPE,group = .model)) +
   geom_point(aes(color=.model))+geom_line(aes(color=.model))
+plot3
 
 
-
+library(cowplot)
+plot_grid(plot1,plot2,plot3,nrow = 3)
 # vilken modell är bäst här?
 
