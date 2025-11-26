@@ -66,13 +66,18 @@ y4<-arima.sim(model = list(ar=ar1_phi[4]),n = nobs,rand.gen = rnorm,sd=0.1)
 # skapar tidsindex
 time_vect<-1:nobs
 
+# skapar 4 delplottar med all simulerad data:
 main_ar1<-paste("phi =",ar1_phi)
 p1<-qplot(x=time_vect,y = as.vector(y1),geom = "line",ylab="",xlab="time",main=main_ar1[1])+theme_bw()
 p2<-qplot(x=time_vect,y = as.vector(y2),geom = "line",ylab="",xlab="time",main=main_ar1[2])+theme_bw()
 p3<-qplot(x=time_vect,y = as.vector(y3),geom = "line",ylab="",xlab="time",main=main_ar1[3])+theme_bw()
 p4<-qplot(x=time_vect,y = as.vector(y4),geom = "line",ylab="",xlab="time",main=main_ar1[4])+theme_bw()
-
+# plottar alla serierna tillsammans:
 plot_grid(p1,p2,p3,p4,nrow=2)
+
+# testa att ändra seed i set.seed() ovan, och skapa de 4 serierna på nytt och
+# plotta dessa. Ni kommer få olika serier för varje seed, men försök att notera
+# det tidsberoende mönstret för olika värden på phi
 
 # teoretisk autokorrelation för ARMA
 ?ARMAacf
