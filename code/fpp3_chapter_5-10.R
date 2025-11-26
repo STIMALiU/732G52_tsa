@@ -2,7 +2,7 @@ library(fpp3)
 
 # Kod från: https://otexts.com/fpp3/tscv.html
 # (med vissa ändringar)
-
+?gafa_stock
 # Re-index based on trading days
 google_stock <- gafa_stock |>
   filter(Symbol == "GOOG", year(Date) >= 2015) |>
@@ -58,8 +58,9 @@ google_2015_tr <- google_2015 |>
   # ökar .init = 100
   stretch_tsibble(.init = 100, .step = 1)
 
+?RW
 fc <- google_2015_tr |>
-  model(rw=RW(Close ~ drift())) |>
+  model(rw=RW(Close ~ drift())) |> # Random walk model
   forecast(h = 8) |>
   group_by(.id) |>
   mutate(h = row_number()) |>
@@ -67,8 +68,18 @@ fc <- google_2015_tr |>
   as_fable(response = "Close", distribution = Close)
 
 # skattar en ARIMA modell
+?ARIMA
 fc2 <- google_2015_tr |>
-  model(arima=ARIMA(Close ~ pdq(2,1,2)+PDQ(0, 0, 0)+ 0)) |>
+  model(arima=ARIMA(Close ~ pdq(1,1,1)+PDQ(0, 0, 0)+ 0)) |> # ARIMA model
+  forecast(h = 8) |>
+  group_by(.id) |>
+  mutate(h = row_number()) |>
+  ungroup() |>
+  as_fable(response = "Close", distribution = Close)
+
+# skattar en Exponential smoothing model
+fc3 <- google_2015_tr |>
+  model(ets=ETS(Close ~ error("A") +trend("A") + season("N"))) |> # Exponential smoothing model med trend
   forecast(h = 8) |>
   group_by(.id) |>
   mutate(h = row_number()) |>
@@ -88,14 +99,21 @@ fc2 |>
   geom_point()+geom_line()
 
 
+fc3 |>
+  accuracy(google_2015, by = c("h", ".model")) |>
+  ggplot(aes(x = h, y = RMSE)) +
+  geom_point()+geom_line()
+
+
 #-------------------------------------------------------------------------------
 # Plottar modellerna tillsammans
 #-------------------------------------------------------------------------------
 
+error_3<-fc3 |> accuracy(google_2015, by = c("h", ".model"))
 error_2<-fc2 |> accuracy(google_2015, by = c("h", ".model"))
 error_1<-fc |> accuracy(google_2015, by = c("h", ".model"))
 
-error<-bind_rows(error_1,error_2)
+error<-bind_rows(error_1,error_2,error_3)
 
 error|> ggplot(aes(x = h, y = RMSE,group = .model)) +
   geom_point(aes(color=.model))+geom_line(aes(color=.model))
