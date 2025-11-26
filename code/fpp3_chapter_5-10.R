@@ -33,11 +33,13 @@ google_2015 |>
 
 
 # gör prognoser 8 steg framåt
+# h är prognossteg
+
 google_2015_tr <- google_2015 |>
   stretch_tsibble(.init = 3, .step = 1)
 fc <- google_2015_tr |>
   model(RW(Close ~ drift())) |>
-  forecast(h = 8) |>
+  forecast(h = 8) |> # här anger vi att vi vill göra prognos upp till 8 tidsenhenter framåt
   group_by(.id) |>
   mutate(h = row_number()) |>
   ungroup() |>
@@ -61,7 +63,7 @@ google_2015_tr <- google_2015 |>
 ?RW
 fc <- google_2015_tr |>
   model(rw=RW(Close ~ drift())) |> # Random walk model
-  forecast(h = 8) |>
+  forecast(h = 8) |> # här anger vi att vi vill göra prognos upp till 8 tidsenhenter framåt
   group_by(.id) |>
   mutate(h = row_number()) |>
   ungroup() |>
@@ -71,20 +73,22 @@ fc <- google_2015_tr |>
 ?ARIMA
 fc2 <- google_2015_tr |>
   model(arima=ARIMA(Close ~ pdq(1,1,1)+PDQ(0, 0, 0)+ 0)) |> # ARIMA model
-  forecast(h = 8) |>
+  forecast(h = 8) |> # <- här anger vi att vi vill göra prognos upp till 8 tidsenhenter framåt
   group_by(.id) |>
   mutate(h = row_number()) |>
   ungroup() |>
   as_fable(response = "Close", distribution = Close)
 
 # skattar en Exponential smoothing model
+?ETS
 fc3 <- google_2015_tr |>
   model(ets=ETS(Close ~ error("A") +trend("A") + season("N"))) |> # Exponential smoothing model med trend
-  forecast(h = 8) |>
+  forecast(h = 8) |> # här anger vi att vi vill göra prognos upp till 8 tidsenhenter framåt
   group_by(.id) |>
   mutate(h = row_number()) |>
   ungroup() |>
   as_fable(response = "Close", distribution = Close)
+
 
 
 fc |>
@@ -105,6 +109,8 @@ fc3 |>
   geom_point()+geom_line()
 
 
+
+
 #-------------------------------------------------------------------------------
 # Plottar modellerna tillsammans
 #-------------------------------------------------------------------------------
@@ -115,8 +121,21 @@ error_1<-fc |> accuracy(google_2015, by = c("h", ".model"))
 
 error<-bind_rows(error_1,error_2,error_3)
 
+# plottar jämförande kurvor för olika utvärderingsmått 
+
+# RMSE
 error|> ggplot(aes(x = h, y = RMSE,group = .model)) +
   geom_point(aes(color=.model))+geom_line(aes(color=.model))
+
+# MAE
+error|> ggplot(aes(x = h, y = MAE,group = .model)) +
+  geom_point(aes(color=.model))+geom_line(aes(color=.model))
+
+# MAPE
+error|> ggplot(aes(x = h, y = MAPE,group = .model)) +
+  geom_point(aes(color=.model))+geom_line(aes(color=.model))
+
+
 
 # vilken modell är bäst här?
 
