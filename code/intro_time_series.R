@@ -64,6 +64,7 @@ autoplot(y1)+theme_bw()+ggtitle("Min tidserie")
 # skapar kvartalsdata:
 y2<-ts(data = x1,start = 2009,frequency = 4)
 plot(y2)
+autoplot(y2)
 # notera skalan på x-axeln
 
 as.Date(y2)
@@ -76,7 +77,7 @@ as.Date(y2)
 set.seed(354)
 time_val<-1:60
 set.seed(3432)
-x3<-2*sin((2*pi)/(12)*time_val)+rnorm(n =  length(time_val),mean = 0,sd = 0.4)+12
+x3<-2*sin((2*pi)/(12)*time_val)+rnorm(n =  length(time_val),mean = 0,sd = 0.4)+20
 
 
 y3<-ts(data = x3,start = 2017,frequency = 12)
@@ -94,7 +95,7 @@ day(y3_date)
 
 ?wday
 wday(y3_date) 
-# notera 1 kan betyda "måndag" eller "söndag" beroende på
+# notera 1 kan betyda "måndag" eller "söndag" beroende på 
 # vilken inställning som man har
 
 wday(y3_date,label = TRUE)
