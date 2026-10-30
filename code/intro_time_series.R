@@ -51,7 +51,11 @@ y1_date
 
 
 # vi kan även plotta med ggplot2 via paketet ggfortify
-# se: https://cran.r-project.org/web/packages/ggfortify/vignettes/plot_ts.html
+# mer info här:
+# Concepts and Basics of ggfortify: https://rpubs.com/sinhrks/basics
+# Plotting Time Series with ggplot2 and ggfortify: https://rpubs.com/sinhrks/plot_ts
+# Plotting Time Series Statistics with ggplot2 and ggfortify: https://rpubs.com/sinhrks/plot_tsstats
+
 library(ggfortify)
 autoplot(y1)+theme_bw()+ggtitle("Min tidserie")
 
