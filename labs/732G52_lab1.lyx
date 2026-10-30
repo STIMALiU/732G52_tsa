@@ -94,7 +94,7 @@ LABORATION 1
 \end_layout
 
 \begin_layout Author
-732G52 - HT2025
+732G52 - HT2026
 \end_layout
 
 \begin_layout Section*
@@ -357,7 +357,7 @@ tsibble
 \family typewriter
 tbl_ts
 \family default
- används för representera tidserier.
+ används för representera tidsserier.
  
 \begin_inset Quotes sld
 \end_inset
