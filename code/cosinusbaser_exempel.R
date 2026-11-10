@@ -1,7 +1,7 @@
 
 # läser in funktion för cosinusbaser
 source(
-  "https://raw.githubusercontent.com/STIMALiU/732G57_ML/master/labs/cosine_basis.R"
+  "https://raw.githubusercontent.com/STIMALiU/732G52_tsa/refs/heads/main/code/cosine_basis.R"
 )
 
 #-------------------------------------------------------------------------------
