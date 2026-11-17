@@ -201,7 +201,7 @@ aus_economy %>%
 # season("N")  ingen
 
 fit <- aus_economy %>%
-  model(AAN = ETS(Pop ~ error("M") + trend("A") + season("N")))
+  model(AAN = ETS(Pop ~ error("A") + trend("A") + season("N")))
 report(fit)
 
 components(fit) %>% autoplot()
