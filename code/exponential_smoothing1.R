@@ -196,7 +196,7 @@ aus_economy %>%
   report()
 
 # anpassar en modell med 
-# error("M"):  multiplikativt fel
+# error("A"):  additivt fel
 # trend:       additiv trend
 # season("N")  ingen
 
