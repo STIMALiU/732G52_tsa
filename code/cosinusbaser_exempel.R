@@ -37,29 +37,30 @@ round(cor(cos_list$basis_mat),3)
 # skapar lite data
 n <- 500
 set.seed(424)
-x <- sort(runif(n , min = 0, max = 5  ))
+x <- seq(0,5,length=n)
 y <- 0.5 + 3*x - 2*x^2 + .2*x^3 + log(2*x+1) + 3*sin(pi * x) + rnorm(n = n, sd = 1)
 df <- data.frame(x = x, y = y)
 plot(df)
 library(ggplot2)
 
 
-# skapar cosinusbaser
+# skapar cosinusbaser upp till ordning 20 
 
 cos_list<-cosine_basis(x = x,order = 20) 
 str(cos_list)
 
 # anpassar med lm()
 
-# modell 1: 5 baser
+# modell 1: 5 baser (de 5 första)
 df_temp1<-data.frame(y=y,cos_list$basis_mat[,1:5])
 head(df_temp1)
 lm_cos1<-lm(y~.,data=df_temp1)
 plot(df)
 lines(x,fitted(lm_cos1),col="blue",lwd=3)
+# hur blev anpassningen?
 
 
-# modell 2: 10 baser
+# modell 2: 10 baser (de 10 första)
 df_temp2<-data.frame(y=y,cos_list$basis_mat[,1:10])
 head(df_temp2)
 lm_cos2<-lm(y~.,data=df_temp2)
