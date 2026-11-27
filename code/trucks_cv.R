@@ -13,7 +13,10 @@ trucks
 autoplot(trucks)
 
 
-trucks_cv_tr <- trucks |> stretch_tsibble(.init = 280, .step = 1)
+H<-12
+trucks_cv_tr <- trucks |>
+  slice_head(n = nrow(trucks) - H) |>
+  stretch_tsibble(.init = 280, .step = 1)
 
 
 model1_results <- trucks_cv_tr |>
