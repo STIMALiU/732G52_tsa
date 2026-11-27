@@ -158,6 +158,17 @@ for (k in 1:8) {
   grid_data[[paste0("cos", k)]] <- cosine_basis(grid_data$x, k)
 }
 
+par(mfrow=c(3,2))
+plot(train_data$x,train_data$cos1,main="cosine basis: k = 1")
+plot(train_data$x,train_data$cos2,main="cosine basis: k = 2")
+plot(train_data$x,train_data$cos3,main="cosine basis: k = 3")
+plot(train_data$x,train_data$cos4,main="cosine basis: k = 4")
+plot(train_data$x,train_data$cos5,main="cosine basis: k = 5")
+plot(train_data$x,train_data$cos6,main="cosine basis: k = 6")
+par(mfrow=c(1,1))
+
+head(train_data)
+
 cosine_1 <- lm(y ~ cos1, data = train_data)
 cosine_2 <- lm(y ~ cos1 + cos2, data = train_data)
 cosine_3 <- lm(y ~ cos1 + cos2 + cos3, data = train_data)
